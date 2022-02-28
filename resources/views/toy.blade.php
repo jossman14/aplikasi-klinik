@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <title>Materialart Admin Template</title>
+    <!-- chartist CSS -->
+    <link href="../../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
     <link href="../../dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
-    <link href="../../dist/css/pages/data-table.css" rel="stylesheet">
+    <link href="../../dist/css/pages/dashboard1.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -263,6 +266,7 @@
         <!-- ============================================================== -->
         <aside class="left-sidebar">
             <ul id="slide-out" class="sidenav">
+
                 <li>
                     <ul class="collapsible">
                         <li class="small-cap"><span class="hide-menu">PERSONAL</span></li>
@@ -270,16 +274,14 @@
                             <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">dashboard</i><span class="hide-menu"> Dashboard</span></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <ul>
                                     <li><a href="index.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-1</span></a></li>
                                     <li><a href="index2.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-2</span></a></li>
                                     <li><a href="index3.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-3</span></a></li>
                                     <li><a href="index4.html"><i class="material-icons">adjust</i><span class="hide-menu">Dashboard-4</span></a></li>
                                 </ul>
-                                </ul>
                             </div>
                         </li>
-                        <li>
+                         <li>
                             <a href="javascript: void(0);" class="collapsible-header has-arrow"><i class="material-icons">equalizer</i><span class="hide-menu"> Sidebar Types </span></a>
                             <div class="collapsible-body">
                                 <ul>
@@ -735,187 +737,517 @@
             <!-- ============================================================== -->
             <!-- Title and breadcrumb -->
             <!-- ============================================================== -->
-            <div class="page-titles">
-                <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">User Contact</h5>
-                    <div class="custom-breadcrumb ml-auto">
-                        <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">User Contact</a>
-                    </div>
-                </div>
-            </div>
+
             <!-- ============================================================== -->
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Sales Summery -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col l3 m6 s12">
+                        <div class="card danger-gradient card-hover">
+                            <div class="card-content">
+                                <div class="d-flex no-block align-items-center">
+                                    <div>
+                                        <h2 class="white-text m-b-5">250</h2>
+                                        <h6 class="white-text op-5 light-blue-text">Invoices</h6>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <span class="white-text display-6"><i class="material-icons">assignment</i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col l3 m6 s12">
+                        <div class="card info-gradient card-hover">
+                            <div class="card-content">
+                                <div class="d-flex no-block align-items-center">
+                                    <div>
+                                        <h2 class="white-text m-b-5">520</h2>
+                                        <h6 class="white-text op-5">News Feed</h6>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <span class="white-text display-6"><i class="material-icons">receipt</i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col l3 m6 s12">
+                        <div class="card success-gradient card-hover">
+                            <div class="card-content">
+                                <div class="d-flex no-block align-items-center">
+                                    <div>
+                                        <h2 class="white-text m-b-5">100</h2>
+                                        <h6 class="white-text op-5 text-darken-2">Sales</h6>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <span class="white-text display-6"><i class="material-icons">equalizer</i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col l3 m6 s12">
+                        <div class="card warning-gradient card-hover">
+                            <div class="card-content">
+                                <div class="d-flex no-block align-items-center">
+                                    <div>
+                                        <h2 class="white-text m-b-5">450</h2>
+                                        <h6 class="white-text op-5">Revenue</h6>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <span class="white-text display-6"><i class="material-icons">attach_money</i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Sales Summery -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col s12 l8">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <h5 class="card-title">Yearly Sales</h5>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <ul class="list-inline font-12 dl m-r-10">
+                                            <li class="cyan-text"><i class="fa fa-circle"></i> Earnings</li>
+                                            <li class="blue-text text-accent-4"><i class="fa fa-circle"></i> Sales</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Sales Summery -->
+                                <div class="p-t-20">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div id="sales" style="height: 332px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 l4">
+                        <div class="card card-hover">
+                            <div class="card-content">
+                                <div class="d-flex align-items-center">
+                                    <div class="m-r-20">
+                                        <h1 class=""><i class="ti-light-bulb"></i></h1></div>
+                                    <div>
+                                        <h3 class="card-title">Sales Analytics</h3>
+                                        <h6 class="card-subtitle">March  2017</h6> </div>
+                                </div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col s6">
+                                        <h3 class="font-light m-t-10"><sup><small><i class="ti-arrow-up"></i></small></sup>35487</h3>
+                                    </div>
+                                    <div class="col s6 right-align">
+                                        <div class="p-t-10 p-b-10">
+                                            <div class="spark-count" style="height:65px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-hover">
+                            <div class="card-content">
+                                <div class="d-flex align-items-center">
+                                    <div class="m-r-20">
+                                        <h1 class=""><i class="ti-pie-chart"></i></h1></div>
+                                    <div>
+                                        <h3 class="card-title">Bandwidth usage</h3>
+                                        <h6 class="card-subtitle">March  2017</h6>
+                                    </div>
+                                </div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col s6">
+                                        <h3 class="font-light m-t-10">50 GB</h3>
+                                    </div>
+                                    <div class="col s6 p-t-10 p-b-20 right-align">
+                                        <div class="p-t-10 p-b-10 m-r-20">
+                                            <div class="spark-count2" style="height:65px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Sales -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col s12 l4">
+                        <div class="card">
+                            <div class="card-content">
+                                <h5 class="card-title">Messages</h5>
+                                <div class="message-box">
+                                    <div class="message-widget message-scroll">
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../../assets/images/users/d1.jpg" alt="user" class="circle"> <span class="profile-status online pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Pavan kumar</h5> <span class="mail-desc">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been.</span> <span class="time">9:30 AM</span> </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../../assets/images/users/d2.jpg" alt="user" class="circle"> <span class="profile-status busy pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../../assets/images/users/4.jpg" alt="user" class="circle"> <span class="profile-status away pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Arijit Sinh</h5> <span class="mail-desc">Simply dummy text of the printing and typesetting industry.</span> <span class="time">9:08 AM</span> </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../../assets/images/users/d4.jpg" alt="user" class="circle"> <span class="profile-status offline pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../../assets/images/users/d5.jpg" alt="user" class="circle"> <span class="profile-status online pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Pavan kumar</h5> <span class="mail-desc">Welcome to the Elite Admin</span> <span class="time">9:30 AM</span> </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 l8">
+                        <div class="card news-slide" style="background:url(../../assets/images/carousel/img6.jpg) center center / cover;">
+                            <div class="carousel carousel-slider" >
+                                <a class="carousel-item" href="#one!">
+                                    <div class="carousel-caption">
+                                        <span class="label label-danger label-rounded">News</span>
+                                        <h3 class="m-t-5 font-light white-text">Market Stock exchange status</h3>
+                                        <p class="white-text">It has survived not only five centuries, but also the leap into electronic typesetting</p>
+                                        <div class="row">
+                                            <div class="col m4 m-t-10">
+                                                <h4 class="m-b-0 green-text"><i class="ti-arrow-up"></i>350</h4><span class="white-text op-5">Reliance</span>
+                                            </div>
+                                            <div class="col m4 m-t-10">
+                                                <h4 class="m-b-0 orange-text text-darken-2"><i class="ti-arrow-down"></i>-150</h4><span class="white-text op-5">Birla</span>
+                                            </div>
+                                            <div class="col m4 m-t-10">
+                                                <h4 class="m-b-0 green-text"><i class="ti-arrow-up"></i>650</h4><span class="white-text op-5">Tata</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="carousel-item" href="#one!" style="background:url(../../assets/images/carousel/img6.jpg) center center / cover;">
+                                    <div class="carousel-caption">
+                                        <span class="label label-danger label-rounded">Personal</span>
+                                        <p class="white-text m-t-10">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                    </div>
+                                </a>
+                                <a class="carousel-item" href="#one!" style="background:url(../../assets/images/carousel/img6.jpg) center center / cover;">
+                                    <div class="carousel-caption">
+                                        <span class="label label-info label-rounded">Design</span>
+                                        <p class="white-text m-t-10">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- product sales anf active users -->
+                <!-- ============================================================== -->
                 <div class="row">
                     <div class="col s12">
                         <div class="card">
                             <div class="card-content">
-                                <div class="d-flex no-block align-items-center">
-                                    <h5 class="card-title">All Contacts</h5>
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <h5 class="card-title">Recent Sales</h5>
+                                        <h6 class="card-subtitle">Sales on products we have</h6>
+                                    </div>
                                     <div class="ml-auto">
-                                        <a class="waves-effect waves-light btn blue-grey darken-4 modal-trigger" href="#modal2">Create New Contact</a>
+                                        <div class="input-field dl support-select">
+                                            <select>
+                                                <option value="0" selected>10 Mar - 10 Apr</option>
+                                                <option value="1">10 Apr - 10 May</option>
+                                                <option value="2">10 May - 10 Jun</option>
+                                                <option value="3">10 Jun - 10 Jul</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table id="file_export" class="table table-bordered nowrap display">
+                                <div class="table-responsive m-b-20">
+                                    <table class="">
                                         <thead>
                                             <tr>
-                                                <th> </th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Role</th>
-                                                <th>Age</th>
-                                                <th>Joining date</th>
-                                                <th>Salery</th>
-                                                <th>Action</th>
+                                                <th>Executives</th>
+                                                <th>Product</th>
+                                                <th>Price</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Progress</th>
+                                                <th>Sales</th>
+                                                <th>Earned</th>
                                             </tr>
                                         </thead>
-                                   <tbody>
-                                    <tr>
-                                        <td>
-                                            <p>
-                                                <label class="m-l-15">
-                                                    <input type="checkbox" />
-                                                    <span></span>
-                                                </label>
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <a href="app-contact-detail.html"><img src="../../assets/images/users/1.jpg" alt="user" class="circle" width="30px" /> Genelia Deshmukh</a>
-                                        </td>
-                                        <td>genelia@gmail.com</td>
-                                        <td>+123 456 789</td>
-                                        <td><span class="label label-danger">Designer</span> </td>
-                                        <td>23</td>
-                                        <td>12-10-2014</td>
-                                        <td>$1200</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                        </td>
-                                    </tr>
-                                   </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex no-block align-items-center">
+                                                        <div class="m-r-10"><img src="../../assets/images/users/d1.jpg" alt="user" class="circle" width="45" /></div>
+                                                        <div class="">
+                                                            <h5 class="m-b-0 font-16 font-medium">Hanna Gover</h5><span>hgover@gmail.com</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="">Elite Admin</p>
+                                                </td>
+                                                <td class="blue-grey-text text-darken-4 font-medium">$96K</td>
+                                                <td>May 23, 2018</td>
+                                                <td><span class="label label-info">Sale</span></td>
+                                                <td class="green-text"><i class="fa fa-arrow-up"></i> 23%</td>
+                                                <td>2356</td>
+                                                <td class="blue-grey-text  text-darken-4 font-medium">$96K</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex no-block align-items-center">
+                                                        <div class="m-r-10"><img src="../../assets/images/users/d2.jpg" alt="user" class="circle" width="45" /></div>
+                                                        <div class="">
+                                                            <h5 class="m-b-0 font-16 font-medium">Daniel Kristeen</h5><span>Kristeen@gmail.com</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="">Real Homes WP Theme</p>
+                                                </td>
+                                                <td class="blue-grey-text text-darken-4 font-medium">$85K</td>
+                                                <td>May 23, 2018</td>
+                                                <td><span class="label cyan">Extended</span></td>
+                                                <td class="green-text"><i class="fa fa-arrow-up"></i> 12%</td>
+                                                <td>2198</td>
+                                                <td class="blue-grey-text  text-darken-4 font-medium">$85K</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex no-block align-items-center">
+                                                        <div class="m-r-10"><img src="../../assets/images/users/d3.jpg" alt="user" class="circle" width="45" /></div>
+                                                        <div class="">
+                                                            <h5 class="m-b-0 font-16 font-medium">Julian Josephs</h5><span>Josephs@gmail.com</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="">MedicalPro WP Theme</p>
+                                                </td>
+                                                <td class="blue-grey-text text-darken-4 font-medium">$81K</td>
+                                                <td>May 23, 2018</td>
+                                                <td><span class="label label-primary">Multiple</span></td>
+                                                <td class="orange-text"><i class="fa fa-arrow-down"></i> 07%</td>
+                                                <td>1237</td>
+                                                <td class="blue-grey-text  text-darken-4 font-medium">$76K</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex no-block align-items-center">
+                                                        <div class="m-r-10"><img src="../../assets/images/users/2.jpg" alt="user" class="circle" width="45" /></div>
+                                                        <div class="">
+                                                            <h5 class="m-b-0 font-16 font-medium">Jan Petrovic</h5><span>hgover@gmail.com</span></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="">HostinPress Html</p>
+                                                </td>
+                                                <td class="blue-grey-text text-darken-4 font-medium">-$30K</td>
+                                                <td>May 23, 2018</td>
+                                                <td><span class="label label-warning">Tax</span></td>
+                                                <td class="green-text"><i class="fa fa-arrow-up"></i> 25%</td>
+                                                <td>1956</td>
+                                                <td class="blue-grey-text  text-darken-4 font-medium">$90K</td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
+                                <a href="javascript: void(0)"><i class="fas fa-angle-right"></i> View Complete Report</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col l4 s12">
+                </div>
+                <!-- ============================================================== -->
+                <!-- Recent comment and chats -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- Recent comment -->
+                    <div class="col s12 m12 l6">
                         <div class="card">
                             <div class="card-content">
-                                <a href="#modal1" class="waves-effect waves-light btn indigo modal-trigger" style="width: 100%;"><i class="fas fa-share-alt-square m-r-10"></i>Share With</a>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="card-content">
-                                <div class="row">
-                                    <form class="col s12">
-                                        <div class="input-field">
-                                            <i class="material-icons prefix">search</i>
-                                            <input id="icon_prefix" type="text" class="validate">
-                                            <label for="icon_prefix">Search Contact Here</label>
+                                <h5 class="card-title">Recent Comments</h5>
+                                <div class="comment-widgets scrollable" style="height:560px;">
+                                    <!-- Comment Row -->
+                                    <div class="d-flex flex-row comment-row">
+                                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="circle"></div>
+                                        <div class="comment-text w-100">
+                                            <h6 class="font-medium">James Anderson</h6>
+                                            <span class="m-b-15 db">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                                            <div class="comment-footer">
+                                                <span class="text-muted right">April 14, 2016</span> <span class="label label-info">Pending</span> <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>
+                                                </span> </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="collection">
-                                    <a href="#!" class="collection-item active indigo"><i class="ti-layers m-r-10"></i>All Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-star m-r-10"></i>Favourite Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-bookmark m-r-10"></i>Recently Created</a>
-                                </div>
-                                <h5 class="card-title m-t-30">Groups</h5>
-                                <div class="collection">
-                                    <a href="#!" class="collection-item"><i class="ti-flag-alt-2 m-r-10"></i>Success Warriers<span class="new badge red">40</span></a>
-                                    <a href="#!" class="collection-item"><i class="ti-notepad m-r-10"></i>Project<span class="new badge blue">14</span></a>
-                                    <a href="#!" class="collection-item"><i class="ti-target m-r-10"></i>Envato Author<span class="new badge indigo">114</span></a>
-                                    <a href="#!" class="collection-item"><i class="ti-comments m-r-10"></i>IT Friends<span class="new badge red">120</span></a>
-                                </div>
-                                <h5 class="card-title m-t-30">More</h5>
-                                <div class="collection">
-                                    <a href="#!" class="collection-item"><i class="ti-import m-r-10"></i>Import Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-export m-r-10"></i>Export Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-share-alt m-r-10"></i>Restore Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-layers-alt m-r-10"></i>Duplicate Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-trash m-r-10"></i>Delete All Contacts</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Share Modal Structure -->
-            <div id="modal1" class="modal">
-                <div class="modal-content">
-                    <h5 class="card-title"><i class="material-icons m-r-10">share</i>Share With</h5>
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="icon_prefi2" type="text" class="validate">
-                                    <label for="icon_prefi2">Enter Name Here</label>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="col s3 center-align">
-                            <a href="#Whatsapp">
-                                <i class="display-6 fab fa-whatsapp green-text"></i><h6 class="m-t-15">Whatsapp</h6>
-                            </a>
-                        </div>
-                        <div class="col s3 center-align">
-                            <a href="#Facebook">
-                                <i class="display-6 fab fa-facebook-f blue-text"></i><h6 class="m-t-15">Facebook</h6>
-                            </a>
-                        </div>
-                        <div class="col s3 center-align">
-                            <a href="#Instagram">
-                                <i class="display-6 fab fa-instagram red-text"></i><h6 class="m-t-15">Instagram</h6>
-                            </a>
-                        </div>
-                        <div class="col s3 center-align">
-                            <a href="#Skype">
-                                <i class="display-6 fab fa-skype"></i><h6 class="m-t-15">Skype</h6>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text"><i class="fas fa-share"></i> Send</a>
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text">Cancel</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Create Modal Structure -->
-            <div id="modal2" class="modal">
-                <div class="modal-content">
-                    <h5 class="card-title"> <i class="fas fa-phone-square m-r-10"></i>New Contact</h5>
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="icon_prefix" type="text" class="validate">
-                                    <label for="icon_prefix">Enter Name Here</label>
-                                </div>
-                                <div class="input-field col s9">
-                                    <i class="material-icons prefix">phone</i>
-                                    <input id="icon_telephone" type="tel" class="validate">
-                                    <label for="icon_telephone">Telephone</label>
-                                </div>
-                                <div class="file-field input-field col s9">
-                                    <div class="btn indigo">
-                                        <span>File</span>
-                                        <input type="file">
                                     </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text">
+                                    <!-- Comment Row -->
+                                    <div class="d-flex flex-row comment-row">
+                                        <div class="p-2"><img src="../../assets/images/users/4.jpg" alt="user" width="50" class="circle"></div>
+                                        <div class="comment-text active w-100">
+                                            <h6 class="font-medium">Michael Jorden</h6>
+                                            <span class="m-b-15 db">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                                            <div class="comment-footer ">
+                                                <span class="text-muted right">April 14, 2016</span>
+                                                <span class="label label-success">Approved</span>
+                                                <span class="action-icons active">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="icon-close"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart text-danger"></i></a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Comment Row -->
+                                    <div class="d-flex flex-row comment-row">
+                                        <div class="p-2"><img src="../../assets/images/users/5.jpg" alt="user" width="50" class="circle"></div>
+                                        <div class="comment-text w-100">
+                                            <h6 class="font-medium">Johnathan Doeting</h6>
+                                            <span class="m-b-15 db">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                                            <div class="comment-footer">
+                                                <span class="text-muted right">April 14, 2016</span>
+                                                <span class="label label-warning">Rejected</span>
+                                                <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Comment Row -->
+                                    <div class="d-flex flex-row comment-row">
+                                        <div class="p-2"><img src="../../assets/images/users/1.jpg" alt="user" width="50" class="circle"></div>
+                                        <div class="comment-text w-100">
+                                            <h6 class="font-medium">James Anderson</h6>
+                                            <span class="m-b-15 db">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                                            <div class="comment-footer">
+                                                <span class="text-muted right">April 14, 2016</span> <span class="label label-info">Pending</span> <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>
+                                                </span> </div>
+                                        </div>
+                                    </div>
+                                    <!-- Comment Row -->
+                                    <!-- Comment Row -->
+                                    <div class="d-flex flex-row comment-row">
+                                        <div class="p-2"><img src="../../assets/images/users/4.jpg" alt="user" width="50" class="circle"></div>
+                                        <div class="comment-text active w-100">
+                                            <h6 class="font-medium">Michael Jorden</h6>
+                                            <span class="m-b-15 db">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                                            <div class="comment-footer ">
+                                                <span class="text-muted right">April 14, 2016</span>
+                                                <span class="label label-success">Approved</span>
+                                                <span class="action-icons active">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="icon-close"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart text-danger"></i></a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Comment Row -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Recent chats -->
+                    <div class="col s12 m12 l6">
+                        <div class="card">
+                            <div class="card-content">
+                                <h5 class="card-title">Recent Chats</h5>
+                                <div class="chat-box scrollable" style="height:480px;">
+                                    <!--chat Row -->
+                                    <ul class="chat-list">
+                                        <!--chat Row -->
+                                        <li>
+                                            <div class="chat-img"><img src="../../assets/images/users/1.jpg" alt="user"></div>
+                                            <div class="chat-content">
+                                                <h6 class="font-medium">James Anderson</h6>
+                                                <div class="box bg-light-info">Lorem Ipsum is simply dummy text of the printing &amp; type setting industry.</div>
+                                            </div>
+                                            <div class="chat-time">10:56 am</div>
+                                        </li>
+                                        <!--chat Row -->
+                                        <li>
+                                            <div class="chat-img"><img src="../../assets/images/users/2.jpg" alt="user"></div>
+                                            <div class="chat-content">
+                                                <h6 class="font-medium">Bianca Doe</h6>
+                                                <div class="box bg-light-info">It’s Great opportunity to work.</div>
+                                            </div>
+                                            <div class="chat-time">10:57 am</div>
+                                        </li>
+                                        <!--chat Row -->
+                                        <li class="odd">
+                                            <div class="chat-content">
+                                                <div class="box bg-light-inverse">I would love to join the team.</div>
+                                                <br>
+                                            </div>
+                                        </li>
+                                        <!--chat Row -->
+                                        <li class="odd">
+                                            <div class="chat-content">
+                                                <div class="box bg-light-inverse">Whats budget of the new project.</div>
+                                                <br>
+                                            </div>
+                                            <div class="chat-time">10:59 am</div>
+                                        </li>
+                                        <!--chat Row -->
+                                        <li>
+                                            <div class="chat-img"><img src="../../assets/images/users/3.jpg" alt="user"></div>
+                                            <div class="chat-content">
+                                                <h6 class="font-medium">Angelina Rhodes</h6>
+                                                <div class="box bg-light-info">Well we have good budget for the project</div>
+                                            </div>
+                                            <div class="chat-time">11:00 am</div>
+                                        </li>
+                                        <!--chat Row -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <div class="row">
+                                    <div class="col s8">
+                                        <div class="input-field m-t-0 m-b-0">
+                                            <textarea id="textarea1" class="materialize-textarea b-0"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col s4">
+                                        <a class="btn-floating btn-large cyan pulse right"><i class="fas fa-paper-plane"></i></a>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat indigo white-text"><i class="far fa-save m-r-10"></i> Save Contact</a>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -1266,26 +1598,10 @@
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
-    <script src="../../assets/extra-libs/DataTables/datatables.min.js"></script>
-    <!-- start - This is for export functionality only -->
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
-    <script>
-    //=============================================//
-    //    File export                              //
-    //=============================================//
-    $('#file_export').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    });
-    </script>
+    <script src="../../assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="../../dist/js/pages/dashboards/dashboard1.js"></script>
 </body>
 
 </html>

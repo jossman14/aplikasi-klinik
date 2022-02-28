@@ -8,10 +8,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template') }}/assets/images/k2.png">
     <title>Klinik Gigi | @yield('judul-halaman')</title>
     <link href="{{ asset('template') }}/dist/css/style.css" rel="stylesheet">
+    @yield('halaman-css')
     <!-- This page CSS -->
 
 
-    @yield('halaman-css')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -300,12 +300,54 @@
                                 </span></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="{{route('pasien.index')}}"><i
+                                    {{-- <li><a href="{{route('pasien.index')}}"><i
                                                 class="material-icons">picture_in_picture</i><span
-                                                class="hide-menu">Daftar Periksa</span></a></li>
+                                                class="hide-menu">Daftar Periksa</span></a></li> --}}
                                     <li><a href="{{route('pasien.index')}}"><i
                                                 class="material-icons">photo_size_select_small</i><span
                                                 class="hide-menu">Manajemen Pasien</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="{{request()->is("sdm.index") or request()->is("sdm.create") or request()->is("sdm.edit") or request()->is("sdm.show") ? 'active' : ''}}">
+                            <a href="javascript:void(0)" class="collapsible-header has-arrow"><i
+                                    class="material-icons">view_agenda</i><span class="hide-menu"> SDM
+                                </span></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    {{-- <li><a href="{{route('sdm.index')}}"><i
+                                                class="material-icons">picture_in_picture</i><span
+                                                class="hide-menu">Daftar Periksa</span></a></li> --}}
+                                    <li><a href="{{route('sdm.index')}}"><i
+                                                class="material-icons">verified_user</i><span
+                                                class="hide-menu">Manajemen SDM</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="javascript:void(0)" class="collapsible-header has-arrow"><i
+                                    class="material-icons">filter_list</i><span class="hide-menu"> Lainnya
+                                </span></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    {{-- <li><a href="{{route('agama.index')}}"><i
+                                                class="material-icons">picture_in_picture</i><span
+                                                class="hide-menu">Daftar Periksa</span></a></li> --}}
+                                    <li><a href="{{route('agama.index')}}"><i
+                                                class="material-icons">filter_tilt_shift</i><span
+                                                class="hide-menu">Agama</span></a></li>
+                                    <li><a href="{{route('jenis_kelamin.index')}}"><i
+                                                class="material-icons">filter_vintage</i><span
+                                                class="hide-menu">Jenis Kelamin</span></a></li>
+                                    <li><a href="{{route('golongan_darah.index')}}"><i
+                                                class="material-icons">spa</i><span
+                                                class="hide-menu">Golongan Darah</span></a></li>
+                                    <li><a href="{{route('sapaan.index')}}"><i
+                                                class="material-icons">sort_by_alpha</i><span
+                                                class="hide-menu">Sapaan</span></a></li>
+                                    <li><a href="{{route('jabatan.index')}}"><i
+                                                class="material-icons">streetview</i><span
+                                                class="hide-menu">Jabatan</span></a></li>
                                 </ul>
                             </div>
                         </li>

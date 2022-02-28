@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashController extends Controller
 {
@@ -14,7 +15,11 @@ class DashController extends Controller
      */
     public function index()
     {
-        return view("dash.index");
+        $data =[
+            "jumlahPasien" => DB::table("pasien")->count(),
+            "user" => "User",
+        ];
+        return view("dash.index", $data);
     }
 
     /**
