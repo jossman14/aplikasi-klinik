@@ -16,7 +16,11 @@ class DashController extends Controller
     public function index()
     {
         $data =[
-            "jumlahPasien" => DB::table("pasien")->count(),
+            "jumlahPasien" => DB::table("pasien")->where("deleted_at","=", null)->count(),
+            "jumlahSdmPegawai" => DB::table("sdm")->where("isDokter","=", 1)->where("deleted_at","=", null)->count(),
+            "jumlahSdmDokter" => DB::table("sdm")->where("isDokter","=", 2)->where("deleted_at","=", null)->count(),
+            "obat_stats" => DB::table("obat_detail")->select("nama","stock")->where("deleted_at","=", null)->orderBy("stock","desc")->limit(5)->get(),
+            "obat_stats_low" => DB::table("obat_detail")->select("nama","stock")->where("deleted_at","=", null)->orderBy("stock","asc")->limit(5)->get(),
             "user" => "User",
         ];
         return view("dash.index", $data);

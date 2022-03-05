@@ -81,6 +81,8 @@ Halaman Tambah Pasien
                                         <div class="input-field col s12">
                                             <input id="tgl_lahir" type="text" class="validate datepicker"
                                                 name="tgl_lahir">
+                                                <input type="hidden" name="tgl_lahir" id="tgl_lahir_real"
+                                                value="{{ old('tgl_lahir')}}">
                                             <label for="tgl_lahir">Tanggal Lahir :</label>
                                         </div>
                                     </div>
@@ -227,6 +229,24 @@ Halaman Tambah Pasien
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="row">
+                                    <div class="col s12 m6">
+                                        <div class="input-field col s12">
+                                            <select required class="custom-select form-control" id="status_nikah"
+                                                name="status_nikah">
+                                                <option disabled selected>Pilih Status Menikah</option>
+                                                @foreach($status_nikah as $item)
+
+                                                    <option value="{{ $item->id }}">
+                                                        {{ $item->nama }}</option>
+                                                @endforeach
+                                            </select>
+                                            <label for="sapaan"> Status Menikah : <span class="danger">*</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr>
 
@@ -1022,6 +1042,11 @@ Halaman Tambah Pasien
             return ageString;
         }
 
+        $("#tgl_lahir").change(function (e) {
+            $("tgl_lahir_real").val($("#tgl_lahir").val());
+
+        });
+
         $('.datepicker').datepicker({
             yearRange: 30,
             maxDate: d,
@@ -1037,7 +1062,7 @@ Halaman Tambah Pasien
                     month: 'long',
                     day: 'numeric'
                 });
-                console.log();
+                $("#tgl_lahir_real").val($("#tgl_lahir").val());
                 year = new Date().getFullYear();
                 $("#tgl_lahir").val(date)
                 $("#umur").val(year - createdDate.getFullYear());

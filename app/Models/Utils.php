@@ -49,6 +49,78 @@ class Utils extends Model
         return $data;
     }
 
+    public function searchDiagnosa(Request $request){
+
+        $search = $request->search;
+
+        if($search == ''){
+           $data = DB::table('icd10')->select('id','nama', "arti")->limit(10)->get();
+        }else{
+            $data = DB::table('icd10')
+            ->where('nama','LIKE', '%' .$search . '%')
+            ->orWhere('arti','LIKE', '%' .$search . '%')
+            ->limit(10)->get();
+        }
+
+        $response = array();
+        foreach($data as $item){
+           $response[] = array(
+                "id"=>$item->id,
+                "text"=>$item->nama . " " . $item->arti
+           );
+        }
+
+        return response()->json($response);
+     }
+
+     public function searchTindakan(Request $request){
+
+        $search = $request->search;
+
+        if($search == ''){
+           $data = DB::table('tindakan')->select('id','nama')->limit(10)->get();
+        }else{
+            $data = DB::table('tindakan')
+            ->where('nama','LIKE', '%' .$search . '%')
+
+            ->limit(10)->get();
+        }
+
+        $response = array();
+        foreach($data as $item){
+           $response[] = array(
+                "id"=>$item->id,
+                "text"=>$item->nama
+           );
+        }
+
+        return response()->json($response);
+     }
+
+     public function searchObat(Request $request){
+
+        $search = $request->search;
+
+        if($search == ''){
+           $data = DB::table('obat_detail')->select('id','nama')->limit(10)->get();
+        }else{
+            $data = DB::table('obat_detail')
+            ->where('nama','LIKE', '%' .$search . '%')
+
+            ->limit(10)->get();
+        }
+
+        $response = array();
+        foreach($data as $item){
+           $response[] = array(
+                "id"=>$item->id,
+                "text"=>$item->nama
+           );
+        }
+
+        return response()->json($response);
+     }
+
     public function searchKota(Request $request){
 
         $search = $request->search;
@@ -69,6 +141,36 @@ class Utils extends Model
 
         return response()->json($response);
      }
+
+     public function searchNik(Request $request){
+
+        $search = $request->search;
+
+        if($search == ''){
+           $data = DB::table('pasien')->select("id", "norm", "nama","nik", "tgl_lahir", "umur", "alamat_tetap")->where("deleted_at","=",null)->latest()->limit(10)->get();
+        }else{
+            $data = DB::table('pasien')->select("id", "norm", "nama","nik", "tgl_lahir", "umur", "alamat_tetap")->where('nik','LIKE', '%' .$search . '%')->where("deleted_at","=",null)->latest()->limit(10)->get();
+        }
+
+        $response = array();
+        foreach($data as $item){
+           $response[] = array(
+                "id"=>$item->id,
+                "norm"=>$item->norm,
+                "nama"=>$item->nama,
+                "nik"=>$item->nik,
+                "tgl_lahir"=>$item->tgl_lahir,
+                "umur"=>$item->umur,
+                "alamat_tetap"=>$item->alamat_tetap,
+           );
+        }
+
+
+
+        return response()->json($response);
+     }
+
+
     public function searchDesa(Request $request){
 
         $search = $request->search;

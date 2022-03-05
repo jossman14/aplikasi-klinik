@@ -27,6 +27,9 @@ class PasienController extends Controller
             "all_pasien" => $this->pasienModel->allData(),
             "jenis_kelamin" => $this->utilsModel->getJK(),
             "golongan_darah" => $this->utilsModel->getGolDar(),
+            "status_nikah" => DB::table('status_nikah')->where("deleted_at","=",null)->get(),
+
+            "status_nikah" => DB::table('status_nikah')->where("deleted_at","=",null)->get(),
             "keterangan" => "Tabel ini hanya menampilkan 10 data pasien dengan  total data ". "<span class='green white-text p-l-10 p-r-10'>" . DB::table("pasien")->where("deleted_at","=",null)->count() . "</span>". " dari awal mula
             data pasien ditambahkan ". "<span id='dateFormatAwal' class='green white-text p-l-10 p-r-10'>". DB::table("pasien")->select("tgl_reg")->orderBy("tgl_reg","asc")->first()->tgl_reg. "</span>" ." sampai waktu terakhir data pasien ditambahkan " . "<span id='dateFormatAkhir' class='green  white-text p-l-10 p-r-10'>". DB::table("pasien")->select("tgl_reg")->orderBy("tgl_reg","desc")->first()->tgl_reg. "</span>",
         ];
@@ -69,6 +72,8 @@ class PasienController extends Controller
             "filter_pencarian" => $cari,
             "jenis_kelamin" => $this->utilsModel->getJK(),
             "golongan_darah" => $this->utilsModel->getGolDar(),
+            "status_nikah" => DB::table('status_nikah')->where("deleted_at","=",null)->get(),
+
             "keterangan" => "Tabel menampilkan hasil pencarian " . count($cariData)." data dengan filter pencarian",
         ];
 
@@ -97,6 +102,8 @@ class PasienController extends Controller
             "jenis_kelamin" => $this->utilsModel->getJK(),
             "agama" => $this->utilsModel->getAgama(),
             "golongan_darah" => $this->utilsModel->getGolDar(),
+            "status_nikah" => DB::table('status_nikah')->where("deleted_at","=",null)->get(),
+
 
         ];
 
@@ -113,6 +120,44 @@ class PasienController extends Controller
     {
 
         return $this->utilsModel->searchKota($request);
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cariNik(Request $request)
+    {
+
+        return $this->utilsModel->searchNik($request);
+
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchDiagnosa(Request $request)
+    {
+
+        return $this->utilsModel->searchDiagnosa($request);
+
+    }
+
+    public function searchTindakan(Request $request)
+    {
+
+        return $this->utilsModel->searchTindakan($request);
+
+    }
+    public function searchObat(Request $request)
+    {
+
+        return $this->utilsModel->searchObat($request);
 
     }
     /**
@@ -198,6 +243,7 @@ class PasienController extends Controller
             "nomor_telepon_keluarga" =>$request->nomor_telepon_keluarga,
             "nomor_bpjs" =>$request->nomor_bpjs,
             "sapaan" =>$request->sapaan,
+            "status_nikah" =>$request->status_nikah,
         ];
 
         // dd($data);
@@ -218,7 +264,12 @@ class PasienController extends Controller
      */
     public function show(Pasien $pasien)
     {
-        $singlePasien = $this->pasienModel->singleData($pasien->id);
+        // $singlePasien = $this->pasienModel->singleData($pasien->id);
+        // $singlePasien = DB::table("pasien")->select("pasien.*", "status_nikah.nama as nama_status_nikah")->join("status_nikah", "status_nikah.id", "=", "pasien.status_nikah")->where("deleted_at","=" null)->get();
+
+        $singlePasien = DB::table('pasien')->select("pasien.*","status_nikah.nama as nama_status_nikah")->join("status_nikah", "status_nikah.id", "=", "pasien.status_nikah")->where("pasien.id",'=',$pasien->id)->where("pasien.deleted_at","=",null)->first();
+
+        // dd($singlePasien);
 
         $data = [
             "sapaan" => $this->utilsModel->getSapaan(),
@@ -226,6 +277,8 @@ class PasienController extends Controller
             "agama" =>DB::table('agama')->where("agamaId","=", $singlePasien->agamaId)->select("agama")->first(),
             "golongan_darah" => DB::table('golongan_darah')->where("gol_dar_id","=", $singlePasien->gol_dar_id)->select("golongan_darah")->first(),
             "singlePasien" => $singlePasien,
+            // "status_nikah" => DB::table('status_nikah')->where("deleted_at","=",null)->get(),
+
             "tempat_lahir" => $this->utilsModel->searchKotaSingle($singlePasien->tempat_lahir),
             "kabupaten_tetap" => $this->utilsModel->searchKotaSingle($singlePasien->kabupaten_tetap_id),
             "kecamatan_tetap" => $this->utilsModel->searchKecamatanSingle($singlePasien->kecamatan_tetap_id),
@@ -239,7 +292,70 @@ class PasienController extends Controller
             "kecamatan_klg" => $this->utilsModel->searchKecamatanSingle($singlePasien->kecamatan_klg_id),
             "desa_klg" => $this->utilsModel->searchDesaSingle($singlePasien->desa_klg_id),
             "provinsi_klg" => $this->utilsModel->searchProvinsiSingle($singlePasien->provinsi_klg_id),
+            "diagnosa" => DB::table("riwayat_diagnosa")->select(
+                "icd10.nama",
+                "icd10.arti",
+                "soap_dokter.id",
+                "soap_dokter.id_daftar",
+
+                "daftar_periksa.waktu_daftar_periksa",
+                "pasien.nama as nama_pasien",
+                "poliklinik.nama as nama_poliklinik",
+                "sdm.nama_sdm as nama_dokter",
+                )
+            ->join("icd10", "icd10.id", "=", "riwayat_diagnosa.id_diagnosa")
+            ->join("soap_dokter","soap_dokter.id","=","riwayat_diagnosa.id_soap_dokter")
+            ->join("daftar_periksa","daftar_periksa.id","=","soap_dokter.id_daftar")
+            ->join("pasien","pasien.id","=","daftar_periksa.id_pasien")
+            ->join("sdm","sdm.sdm_id","=", "daftar_periksa.id_dokter")
+            ->join("poliklinik","poliklinik.id","=", "daftar_periksa.id_poli")
+            ->where("pasien.id", "=", $singlePasien->id)
+            ->where("riwayat_diagnosa.deleted_at","=",null)->get(),
+            "tindakan" => DB::table("riwayat_tindakan")
+            ->select(
+                "tindakan.nama",
+                "soap_dokter.id",
+                "riwayat_tindakan.id_daftar",
+                "riwayat_tindakan.jumlah",
+
+                "daftar_periksa.waktu_daftar_periksa",
+                "pasien.nama as nama_pasien",
+                "poliklinik.nama as nama_poliklinik",
+                "sdm.nama_sdm as nama_dokter",
+                )
+                ->join("soap_dokter","soap_dokter.id","=","riwayat_tindakan.id_soap_dokter")
+                ->join("daftar_periksa","daftar_periksa.id","=","soap_dokter.id_daftar")
+                ->join("pasien","pasien.id","=","daftar_periksa.id_pasien")
+                ->join("sdm","sdm.sdm_id","=", "daftar_periksa.id_dokter")
+                ->join("poliklinik","poliklinik.id","=", "daftar_periksa.id_poli")
+            ->join("tindakan", "tindakan.id", "=", "riwayat_tindakan.id_tindakan")
+            ->where("pasien.id", "=", $singlePasien->id)
+
+            ->where("riwayat_tindakan.deleted_at","=",null)->get(),
+            "obat" => DB::table("riwayat_obat")
+            ->select(
+                "obat_detail.nama",
+                "soap_dokter.id",
+                "riwayat_obat.id_daftar",
+                "riwayat_obat.jumlah",
+
+                "daftar_periksa.waktu_daftar_periksa",
+                "pasien.nama as nama_pasien",
+                "poliklinik.nama as nama_poliklinik",
+                "sdm.nama_sdm as nama_dokter",
+                )
+            ->join("obat_detail", "obat_detail.id", "=", "riwayat_obat.id_obat")
+            ->join("soap_dokter","soap_dokter.id","=","riwayat_obat.id_soap_dokter")
+            ->join("daftar_periksa","daftar_periksa.id","=","soap_dokter.id_daftar")
+            ->join("pasien","pasien.id","=","daftar_periksa.id_pasien")
+            ->join("sdm","sdm.sdm_id","=", "daftar_periksa.id_dokter")
+            ->join("poliklinik","poliklinik.id","=", "daftar_periksa.id_poli")
+            ->where("pasien.id", "=", $singlePasien->id)
+
+            ->where("riwayat_obat.deleted_at","=",null)->get(),
         ];
+
+        // dd($data);
 
 
         return view("pasien.show", $data);
@@ -261,6 +377,8 @@ class PasienController extends Controller
             "sapaan" => $this->utilsModel->getSapaan(),
             "jenis_kelamin" => $this->utilsModel->getJK(),
             "golongan_darah" => $this->utilsModel->getGolDar(),
+            "status_nikah" => DB::table('status_nikah')->where("deleted_at","=",null)->get(),
+
             "agama" => $this->utilsModel->getAgama(),
             "singlePasien" => $singlePasien,
             "tempat_lahir" => $this->utilsModel->searchKotaSingle($singlePasien->tempat_lahir),
@@ -331,6 +449,8 @@ class PasienController extends Controller
             "nomor_telepon_keluarga" =>$request->nomor_telepon_keluarga,
             "nomor_bpjs" =>$request->nomor_bpjs,
             "sapaan" =>$request->sapaan,
+            "status_nikah" =>$request->status_nikah,
+
         ];
 
 

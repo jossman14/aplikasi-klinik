@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('judul-halaman')
-Halaman Tambah Pasien
+Halaman Tambah Sumber Daya Manusia
 @endsection
 
 @section('konten')
@@ -11,10 +11,10 @@ Halaman Tambah Pasien
     <!-- ============================================================== -->
     <div class="page-titles">
         <div class="d-flex align-items-center">
-            <h5 class="font-medium m-b-0">Tambah Pasien</h5>
+            <h5 class="font-medium m-b-0">Tambah Sumber Daya Manusia</h5>
             <div class="custom-breadcrumb ml-auto">
-                <a href="#!" class="breadcrumb">Pasien</a>
-                <a href="#!" class="breadcrumb">Tambah Pasien</a>
+                <a href="#!" class="breadcrumb">Sumber Daya Manusia</a>
+                <a href="#!" class="breadcrumb">Tambah Sumber Daya Manusia</a>
             </div>
         </div>
     </div>
@@ -29,48 +29,27 @@ Halaman Tambah Pasien
             <div class="col s12">
                 <div class="card">
                     <div class="card-content wizard-content">
-                        <h5 class="card-title">Form Pasien Baru</h5>
+                        <h5 class="card-title">Form SDM Baru</h5>
                         <h6 class="card-subtitle">Isi data form berikut secara berurutan dan sesuai ketentuan</h6>
-                        <form action="{{ route('pasien.store') }}"
-                            class="validation-wizard wizard-circle m-t-40" method="POST" id="pasien_form">
+                        <form action="{{ route('sdm.store') }}"
+                            class="validation-wizard wizard-circle m-t-40" method="POST" id="sdm_form">
                             @csrf
                             <!-- Step 1 -->
-                            <h6>Identitas Pasien</h6>
+                            <h6>Identitas SDM</h6>
                             <section>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="col s12">
-                                            <div class="input-field col s12">
-                                                <input type="text" class="norm" id="norm" name="norm"
-                                                    value="RM{{ strval(sprintf('%010d', $id)); }}"
-                                                    readonly>
-                                                <label for="norm"> No RM : (Otomatis) <span class="danger">*</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
                                 <div class="row">
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <select required class="custom-select form-control" id="sapaan"
-                                                name="sapaan">
-                                                <option disabled selected>Pilih Sapaan</option>
-                                                @foreach($sapaan as $item)
-
-                                                    <option value="{{ $item->id }}">{{ $item->sapaan }}</option>
-                                                @endforeach
-
-                                            </select>
-                                            <label for="sapaan"> Sapaan : <span class="danger">*</span>
+                                            <input type="text" class="nama" id="nama" name="nama_sdm">
+                                            <label for="nama"> Nama Lengkap : <span class="danger">*</span>
                                             </label>
                                         </div>
                                     </div>
+
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <input type="text" class="nama" id="nama" name="nama">
-                                            <label for="nama"> Nama Lengkap : <span class="danger">*</span>
+                                            <input type="text" class="nik" id="nik" name="nik">
+                                            <label for="nik"> NIK : <span class="danger">*</span>
                                             </label>
                                         </div>
                                     </div>
@@ -81,6 +60,8 @@ Halaman Tambah Pasien
                                         <div class="input-field col s12">
                                             <input id="tgl_lahir" type="text" class="validate datepicker"
                                                 name="tgl_lahir">
+                                                <input type="hidden" name="tgl_lahir" id="tgl_lahir_real"
+                                                value="{{ old('tgl_lahir')}}">
                                             <label for="tgl_lahir">Tanggal Lahir :</label>
                                         </div>
                                     </div>
@@ -93,45 +74,8 @@ Halaman Tambah Pasien
                                     </div>
                                 </div>
                                 <hr>
+
                                 <div class="row">
-
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <input type="text" class="nama_keluarga" id="nama_keluarga"
-                                                name="nama_keluarga">
-                                            <label for="nama_keluarga"> Nama Keluarga : <span class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <input type="text" class="nik" id="nik" name="nik">
-                                            <label for="nik"> NIK : <span class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="row">
-
-
-
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <select required class="custom-select form-control cariKota"
-                                                id="tempat_lahir" name="tempat_lahir" id="test">
-                                                <option disabled selected>Pilih Kota Lahir</option>
-
-
-                                            </select>
-                                            <label for="tempat_lahir"> Kota Lahir : <span class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-
 
 
                                     <div class="col m6">
@@ -150,16 +94,9 @@ Halaman Tambah Pasien
                                         </div>
                                     </div>
 
-
-
-
-
-                                </div>
-                                <hr>
-                                <div class="row">
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <select required class="custom-select form-control" id="agama" name="agama">
+                                            <select required class="custom-select form-control" id="agama_id" name="agama_id">
                                                 <option disabled selected>Pilih Agama</option>
                                                 @foreach($agama as $item)
 
@@ -171,21 +108,32 @@ Halaman Tambah Pasien
                                         </div>
                                     </div>
 
+
+
+                                </div>
+                                <hr>
+                                <div class="row">
+
+
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <input type="text" class="pekerjaan" id="pekerjaan" name="pekerjaan">
-                                            <label for="pekerjaan"> Pekerjaan : <span class="danger">*</span>
+                                            <select required class="custom-select form-control" id="jobdesk"
+                                                name="jobdesk">
+                                                <option disabled selected>Pilih Jobdesk</option>
+                                                @foreach($jabatan as $item)
+
+                                                    <option value="{{ $item->id }}">{{ $item->nama }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <label for="sapaan"> Jobdesk : <span class="danger">*</span>
                                             </label>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <select required class="custom-select form-control" id="gol_dar_id"
-                                                name="gol_dar_id">
+                                            <select required class="custom-select form-control" id="gol_darah_id"
+                                                name="gol_darah_id">
                                                 <option disabled selected>Pilih Golongan Darah</option>
                                                 @foreach($golongan_darah as $item)
 
@@ -200,34 +148,63 @@ Halaman Tambah Pasien
 
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <input type="text" class="nomor_telepon" id="nomor_telepon"
-                                                name="nomor_telepon">
-                                            <label for="nomor_telepon"> Nomor HP : <span class="danger">*</span>
+                                            <select required class="custom-select form-control cariKota" id="tempat_lahir"
+                                                name="tempat_lahir">
+                                                <option disabled selected>Pilih Tempat Lahir</option>
+
+
+                                            </select>
+                                            <label for="tempat_lahir"> Tempat Lahir : <span class="danger">*</span>
                                             </label>
                                         </div>
                                     </div>
 
+                                    <div class="col s12 m6">
+                                        <div class="input-field col s12">
+                                            <select required class="custom-select form-control" id="status_nikah"
+                                                name="status_nikah">
+                                                <option disabled selected>Pilih Status Menikah</option>
+                                                @foreach($status_nikah as $item)
+
+                                                    <option value="{{ $item->id }}">
+                                                        {{ $item->nama }}</option>
+                                                @endforeach
+                                            </select>
+                                            <label for="sapaan"> Status Menikah : <span class="danger">*</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
+
+
 
                                 <div class="row">
+
+
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <input type="text" class="nomor_telepon_keluarga"
-                                                id="nomor_telepon_keluarga" name="nomor_telepon_keluarga">
-                                            <label for="nomor_telepon_keluarga"> Nomor HP Keluarga : <span
-                                                    class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <input type="text" class="nomor_bpjs" id="nomor_bpjs" name="nomor_bpjs">
-                                            <label for="nomor_bpjs"> Nomor BPJS : <span class="danger">*</span>
+                                            <input type="text" class="nomor_hp" id="nomor_hp"
+                                                name="nomor_hp">
+                                            <label for="nomor_hp"> Nomor HP : <span class="danger">*</span>
                                             </label>
                                         </div>
                                     </div>
 
+                                  <div class="col m6">
+                                    <div class="input-field col s12">
+                                        <select required class="custom-select form-control" id="isDokter"
+                                            name="isDokter">
+                                            <option disabled selected>Apakah Dokter?</option>
+                                            <option value="2">Iya</option>
+                                            <option value="1">Tidak</option>
+                                        </select>
+                                        <label for="sapaan"> Apakah Dokter? : <span class="danger">*</span>
+                                        </label>
+                                    </div>
+                                  </div>
+
                                 </div>
+
                                 <hr>
 
 
@@ -240,9 +217,9 @@ Halaman Tambah Pasien
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="input-field col s12">
-                                            <input type="text" class="alamat_tetap" id="alamat_tetap"
-                                                name="alamat_tetap">
-                                            <label for="alamat_tetap"> Alamat Lengkap : <span class="danger">*</span>
+                                            <input type="text" class="alamat_sdm" id="alamat_sdm"
+                                                name="alamat_sdm">
+                                            <label for="alamat_sdm"> Alamat Lengkap : <span class="danger">*</span>
                                             </label>
                                         </div>
                                     </div>
@@ -254,12 +231,12 @@ Halaman Tambah Pasien
                                     <div class="col m6">
                                         <div class="input-field col s12">
                                             <select required class="custom-select form-control cariDesa"
-                                                id="desa_tetap_id" name="desa_tetap_id">
+                                                id="desa_sdm_id" name="desa_sdm_id">
                                                 <option disabled selected>Pilih Desa Tetap</option>
 
 
                                             </select>
-                                            <label for="desa_tetap_id"> Desa Tetap : <span class="danger">*</span>
+                                            <label for="desa_sdm_id"> Desa Tetap : <span class="danger">*</span>
                                             </label>
                                         </div>
                                     </div>
@@ -268,12 +245,12 @@ Halaman Tambah Pasien
                                     <div class="col m6">
                                         <div class="input-field col s12">
                                             <select required class="custom-select form-control cariKecamatan"
-                                                id="kecamatan_tetap_id" name="kecamatan_tetap_id">
+                                                id="kecamatan_sdm_id" name="kecamatan_sdm_id">
                                                 <option disabled selected>Pilih Kecamatan Tetap</option>
 
 
                                             </select>
-                                            <label for="kecamatan_tetap_id"> Kecamatan Tetap : <span
+                                            <label for="kecamatan_sdm_id"> Kecamatan Tetap : <span
                                                     class="danger">*</span>
                                             </label>
                                         </div>
@@ -286,12 +263,12 @@ Halaman Tambah Pasien
                                     <div class="col m6">
                                         <div class="input-field col s12">
                                             <select required class="custom-select form-control cariKota"
-                                                id="kabupaten_tetap_id" name="kabupaten_tetap_id">
+                                                id="kabupaten_sdm_id" name="kabupaten_sdm_id">
                                                 <option disabled selected>Pilih Kabupaten Tetap</option>
 
 
                                             </select>
-                                            <label for="kabupaten_tetap_id"> Kabupaten Tetap : <span
+                                            <label for="kabupaten_sdm_id"> Kabupaten Tetap : <span
                                                     class="danger">*</span>
                                             </label>
                                         </div>
@@ -299,96 +276,12 @@ Halaman Tambah Pasien
                                     <div class="col m6">
                                         <div class="input-field col s12">
                                             <select required class="custom-select form-control cariProvinsi"
-                                                id="provinsi_tetap_id" name="provinsi_tetap_id">
+                                                id="provinsi_sdm_id" name="provinsi_sdm_id">
                                                 <option disabled selected>Pilih Provinsi Tetap</option>
 
 
                                             </select>
-                                            <label for="provinsi_tetap_id"> Provinsi Tetap : <span
-                                                    class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="input-field d-flex justify-content-center">
-                                            <button class="waves-effect waves-light btn green"
-                                                name="alamat_sama">Sinkronkan Alamat Sementara dan Keluarga
-                                                Sama dengan Alamat
-                                                Tetap</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="input-field col s12">
-                                            <input type="text" class="alamat_sementara" id="alamat_sementara"
-                                                name="alamat_sementara">
-                                            <label for="alamat_sementara"> Alamat Sementara : <span
-                                                    class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <select required class="custom-select form-control cariDesa"
-                                                id="desa_smt_id" name="desa_smt_id">
-                                                <option disabled selected>Pilih Desa Sementara</option>
-
-
-                                            </select>
-                                            <label for="desa_smt_id"> Desa Sementara : <span class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <select required class="custom-select form-control cariKecamatan"
-                                                id="kecamatan_smt_id" name="kecamatan_smt_id">
-                                                <option disabled selected>Pilih Kecamatan Sementara</option>
-
-
-                                            </select>
-                                            <label for="kecamatan_smt_id"> Kecamatan Sementara : <span
-                                                    class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <select required class="custom-select form-control cariKota"
-                                                id="kabupaten_smt_id" name="kabupaten_smt_id">
-                                                <option disabled selected>Pilih Kabupaten Sementara</option>
-
-
-                                            </select>
-                                            <label for="kabupaten_smt_id"> Kabupaten Sementara : <span
-                                                    class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <select required class="custom-select form-control cariProvinsi"
-                                                id="provinsi_smt_id" name="provinsi_smt_id">
-                                                <option disabled selected>Pilih Provinsi Sementara</option>
-
-
-                                            </select>
-                                            <label for="provinsi_smt_id"> Provinsi Sementara : <span
+                                            <label for="provinsi_sdm_id"> Provinsi Tetap : <span
                                                     class="danger">*</span>
                                             </label>
                                         </div>
@@ -397,77 +290,6 @@ Halaman Tambah Pasien
 
 
 
-                                <hr>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="input-field col s12">
-                                            <input type="text" class="alamat_keluarga" id="alamat_keluarga"
-                                                name="alamat_keluarga">
-                                            <label for="alamat_keluarga"> Alamat Keluarga : <span
-                                                    class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <select required class="custom-select form-control cariDesa"
-                                                id="desa_klg_id" name="desa_klg_id">
-                                                <option disabled selected>Pilih Desa Keluarga</option>
-
-
-                                            </select>
-                                            <label for="desa_klg_id"> Desa Keluarga : <span class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <select required class="custom-select form-control cariKecamatan"
-                                                id="kecamatan_klg_id" name="kecamatan_klg_id">
-                                                <option disabled selected>Pilih Kecamatan Keluarga</option>
-
-
-                                            </select>
-                                            <label for="kecamatan_klg_id"> Kecamatan Keluarga : <span
-                                                    class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <select required class="custom-select form-control cariKota"
-                                                id="kabupaten_klg_id" name="kabupaten_klg_id">
-                                                <option disabled selected>Pilih Kabupaten Keluarga</option>
-
-
-                                            </select>
-                                            <label for="kabupaten_klg_id"> Kabupaten Keluarga : <span
-                                                    class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col m6">
-                                        <div class="input-field col s12">
-                                            <select required class="custom-select form-control cariProvinsi"
-                                                id="provinsi_klg_id" name="provinsi_klg_id">
-                                                <option disabled selected>Pilih Provinsi Keluarga</option>
-
-
-                                            </select>
-                                            <label for="provinsi_klg_id"> Provinsi Keluarga : <span
-                                                    class="danger">*</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
                             </section>
                             {{-- <button type="submit" class="waves-effect waves-light btn blue">Submit</button> --}}
                             {{-- {!! Form::submit("submit") !!} --}}
@@ -607,8 +429,8 @@ Halaman Tambah Pasien
 
         $("button[name='alamat_sama']").click(function (e) {
 
-            $("input[name='alamat_sementara']").val($("input[name='alamat_tetap']").val());
-            $("input[name='alamat_keluarga']").val($("input[name='alamat_tetap']").val());
+            $("input[name='alamat_sementara']").val($("input[name='alamat_sdm']").val());
+            $("input[name='alamat_keluarga']").val($("input[name='alamat_sdm']").val());
 
             $("input[name='alamat_sementara']").addClass("active");
             $("input[name='alamat_keluarga']").addClass("active");
@@ -617,47 +439,47 @@ Halaman Tambah Pasien
 
 
             $("select[name='desa_smt_id']").empty().append($('<option>', {
-                value: $("select[name='desa_tetap_id']").val(),
-                text: $("select[name='desa_tetap_id'] :selected").text()
+                value: $("select[name='desa_sdm_id']").val(),
+                text: $("select[name='desa_sdm_id'] :selected").text()
 
             }));
             $("select[name='desa_klg_id']").empty().append($('<option>', {
-                value: $("select[name='desa_tetap_id']").val(),
-                text: $("select[name='desa_tetap_id'] :selected").text()
+                value: $("select[name='desa_sdm_id']").val(),
+                text: $("select[name='desa_sdm_id'] :selected").text()
 
             }));
 
             $("select[name='kecamatan_smt_id']").empty().append($('<option>', {
-                value: $("select[name='kecamatan_tetap_id']").val(),
-                text: $("select[name='kecamatan_tetap_id'] :selected").text()
+                value: $("select[name='kecamatan_sdm_id']").val(),
+                text: $("select[name='kecamatan_sdm_id'] :selected").text()
 
             }));
             $("select[name='kecamatan_klg_id']").empty().append($('<option>', {
-                value: $("select[name='kecamatan_tetap_id']").val(),
-                text: $("select[name='kecamatan_tetap_id'] :selected").text()
+                value: $("select[name='kecamatan_sdm_id']").val(),
+                text: $("select[name='kecamatan_sdm_id'] :selected").text()
 
             }));
 
             $("select[name='kabupaten_smt_id']").empty().append($('<option>', {
-                value: $("select[name='kabupaten_tetap_id']").val(),
-                text: $("select[name='kabupaten_tetap_id'] :selected").text()
+                value: $("select[name='kabupaten_sdm_id']").val(),
+                text: $("select[name='kabupaten_sdm_id'] :selected").text()
 
             }));
             $("select[name='kabupaten_klg_id']").empty().append($('<option>', {
-                value: $("select[name='kabupaten_tetap_id']").val(),
-                text: $("select[name='kabupaten_tetap_id'] :selected").text()
+                value: $("select[name='kabupaten_sdm_id']").val(),
+                text: $("select[name='kabupaten_sdm_id'] :selected").text()
 
             }));
 
             $("select[name='provinsi_smt_id']").empty().append($('<option>', {
-                value: $("select[name='provinsi_tetap_id']").val(),
-                text: $("select[name='provinsi_tetap_id'] :selected").text()
+                value: $("select[name='provinsi_sdm_id']").val(),
+                text: $("select[name='provinsi_sdm_id'] :selected").text()
 
             }));
 
             $("select[name='provinsi_klg_id']").empty().append($('<option>', {
-                value: $("select[name='provinsi_tetap_id']").val(),
-                text: $("select[name='provinsi_tetap_id'] :selected").text()
+                value: $("select[name='provinsi_sdm_id']").val(),
+                text: $("select[name='provinsi_sdm_id'] :selected").text()
 
             }));
 
@@ -716,7 +538,7 @@ Halaman Tambah Pasien
         function callback(result) {
             if (result.value) {
                 SweetAlert.fire("Berhasil!", "data telah dimanipulasi", "success");
-                $("#pasien_form")[0].submit();
+                $("#sdm_form")[0].submit();
 
 
             }
@@ -735,13 +557,13 @@ Halaman Tambah Pasien
             nomor_bpjs: {
                 required: true,
             },
-            nomor_telepon_keluarga: {
+            nomor_hp_keluarga: {
                 required: true,
             },
-            nomor_telepon: {
+            nomor_hp: {
                 required: true,
             },
-            pekerjaan: {
+            jobdesk: {
                 required: true,
             },
 
@@ -773,19 +595,19 @@ Halaman Tambah Pasien
             nama: {
                 required: true,
             },
-            alamat_tetap: {
+            alamat_sdm: {
                 required: true,
             },
-            desa_tetap_id: {
+            desa_sdm_id: {
                 required: true,
             },
-            kecamatan_tetap_id: {
+            kecamatan_sdm_id: {
                 required: true,
             },
-            kabupaten_tetap_id: {
+            kabupaten_sdm_id: {
                 required: true,
             },
-            provinsi_tetap_id: {
+            provinsi_sdm_id: {
                 required: true,
             },
             alamat_sementara: {
@@ -821,91 +643,91 @@ Halaman Tambah Pasien
         },
         messages: {
             sapaan: {
-                required: "Silahkan pilih sapaan pasien",
+                required: "Silahkan pilih sapaan sdm",
             },
             nama: {
-                required: "Silahkan isi nama pasien",
+                required: "Silahkan isi nama sdm",
             },
-            alamat_tetap: {
-                required: "Silahkan isi alamat tetap pasien",
+            alamat_sdm: {
+                required: "Silahkan isi alamat tetap sdm",
             },
-            desa_tetap_id: {
-                required: "Silahkan pilih desa tetap pasien",
+            desa_sdm_id: {
+                required: "Silahkan pilih desa tetap sdm",
             },
-            kecamatan_tetap_id: {
-                required: "Silahkan pilih kecamatan tetap pasien",
+            kecamatan_sdm_id: {
+                required: "Silahkan pilih kecamatan tetap sdm",
             },
-            kabupaten_tetap_id: {
-                required: "Silahkan pilih kabupaten tetap pasien",
+            kabupaten_sdm_id: {
+                required: "Silahkan pilih kabupaten tetap sdm",
             },
-            provinsi_tetap_id: {
-                required: "Silahkan pilih provinsi tetap pasien",
+            provinsi_sdm_id: {
+                required: "Silahkan pilih provinsi tetap sdm",
             },
             alamat_sementara: {
-                required: "Silahkan isi alamat sementara pasien",
+                required: "Silahkan isi alamat sementara sdm",
             },
             desa_smt_id: {
-                required: "Silahkan pilih desa sementara pasien",
+                required: "Silahkan pilih desa sementara sdm",
             },
             kecamatan_smt_id: {
-                required: "Silahkan pilih kecamatan sementara pasien",
+                required: "Silahkan pilih kecamatan sementara sdm",
             },
             kabupaten_smt_id: {
-                required: "Silahkan pilih kabupaten sementara pasien",
+                required: "Silahkan pilih kabupaten sementara sdm",
             },
             provinsi_smt_id: {
-                required: "Silahkan pilih provinsi sementara pasien",
+                required: "Silahkan pilih provinsi sementara sdm",
             },
             alamat_keluarga: {
-                required: "Silahkan isi alamat keluarga pasien",
+                required: "Silahkan isi alamat keluarga sdm",
             },
             desa_klg_id: {
-                required: "Silahkan pilih desa keluarga pasien",
+                required: "Silahkan pilih desa keluarga sdm",
             },
             kecamatan_klg_id: {
-                required: "Silahkan pilih kecamatan keluarga pasien",
+                required: "Silahkan pilih kecamatan keluarga sdm",
             },
             kabupaten_klg_id: {
-                required: "Silahkan pilih kabupaten keluarga pasien",
+                required: "Silahkan pilih kabupaten keluarga sdm",
             },
             provinsi_klg_id: {
-                required: "Silahkan pilih provinsi keluarga pasien",
+                required: "Silahkan pilih provinsi keluarga sdm",
             },
 
             nomor_bpjs: {
-                required: "Silahkan isi nomor BPJS pasien",
+                required: "Silahkan isi nomor BPJS sdm",
             },
-            nomor_telepon_keluarga: {
-                required: "Silahkan isi nomor telepon keluarga pasien",
+            nomor_hp_keluarga: {
+                required: "Silahkan isi nomor telepon keluarga sdm",
             },
-            nomor_telepon: {
-                required: "Silahkan isi nomor telepon pasien",
+            nomor_hp: {
+                required: "Silahkan isi nomor telepon sdm",
             },
-            pekerjaan: {
-                required: "Silahkan isi pekerjaan pasien",
+            jobdesk: {
+                required: "Silahkan isi jobdesk sdm",
             },
 
             gol_dar_id: {
-                required: "Silahkan pilih golongan darah pasien",
+                required: "Silahkan pilih golongan darah sdm",
             },
 
             agama: {
-                required: "Silahkan pilih agama pasien",
+                required: "Silahkan pilih agama sdm",
             },
             jenis_kelamin: {
-                required: "Silahkan pilih jenis kelamin pasien",
+                required: "Silahkan pilih jenis kelamin sdm",
             },
             tgl_lahir: {
-                required: "Silahkan isi tanggal lahir pasien",
+                required: "Silahkan isi tanggal lahir sdm",
             },
             tempat_lahir: {
-                required: "Silahkan pilih tempat lahir pasien",
+                required: "Silahkan pilih tempat lahir sdm",
             },
             nik: {
-                required: "Silahkan isi NIK pasien",
+                required: "Silahkan isi NIK sdm",
             },
             nama_keluarga: {
-                required: "Silahkan isi nama keluarga pasien",
+                required: "Silahkan isi nama keluarga sdm",
             },
 
         },
@@ -1022,6 +844,12 @@ Halaman Tambah Pasien
             return ageString;
         }
 
+        $("#tgl_lahir").change(function (e) {
+            $("tgl_lahir_real").val($("#tgl_lahir").val());
+
+        });
+
+
         $('.datepicker').datepicker({
             yearRange: 30,
             maxDate: d,
@@ -1037,7 +865,8 @@ Halaman Tambah Pasien
                     month: 'long',
                     day: 'numeric'
                 });
-                console.log();
+                $("#tgl_lahir_real").val($("#tgl_lahir").val());
+
                 year = new Date().getFullYear();
                 $("#tgl_lahir").val(date)
                 $("#umur").val(year - createdDate.getFullYear());

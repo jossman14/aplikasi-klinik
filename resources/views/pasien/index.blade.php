@@ -103,9 +103,7 @@ Halaman Utama Pasien
                                                         data-toggle="tooltip" data-original-title="delete"
                                                         title='Delete'><i class="ti-close" aria-hidden="true"></i></a>
 
-                                                    {{-- <button type="submit"
-                                                        class="btn waves-effect waves-light red btn-sm btn-icon btn-pure btn-outline show_confirm"
-                                                        data-toggle="tooltip" title='Delete'>Delete</button> --}}
+                                                  
                                                 </form>
 
 
@@ -195,6 +193,22 @@ Halaman Utama Pasien
                                         @endforeach
                                     </select>
                                     <label for="sapaan"> Golongan Darah : <span class="danger">*</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m6">
+                                <div class="input-field col s12">
+                                    <select required class="custom-select form-control" id="status_nikah"
+                                        name="status_nikah">
+                                        <option disabled selected>Pilih Status Menikah</option>
+                                        @foreach($status_nikah as $item)
+
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                    <label for="sapaan"> Status Menikah : <span class="danger">*</span>
                                     </label>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('judul-halaman')
-Halaman Detail Pasien
+Halaman Detail Sumber Daya Manusia
 @endsection
 
 @section('konten')
@@ -11,10 +11,10 @@ Halaman Detail Pasien
     <!-- ============================================================== -->
     <div class="page-titles">
         <div class="d-flex align-items-center">
-            <h5 class="font-medium m-b-0">Pasien Detail</h5>
+            <h5 class="font-medium m-b-0">Sumber Daya Manusia Detail</h5>
             <div class="custom-breadcrumb ml-auto">
-                <a href="#!" class="breadcrumb">Pasien</a>
-                <a href="#!" class="breadcrumb">Pasien Detail</a>
+                <a href="#!" class="breadcrumb">Sumber Daya Manusia</a>
+                <a href="#!" class="breadcrumb">Sumber Daya Manusia Detail</a>
             </div>
         </div>
     </div>
@@ -22,79 +22,51 @@ Halaman Detail Pasien
     <!-- Container fluid scss in scafholding.scss -->
     <!-- ============================================================== -->
     <div class="container-fluid">
-        {{-- {{dd($singlePasien) }} --}}
+
+
+        {{-- {{dd($singleSDM) }} --}}
         <div class="row">
             <div class="col s12">
                 <div class="card">
                     <div class="card-content row">
                         <div class="col s12 m6">
-                            <small>No. RM</small>
-                            <h6>{{ $singlePasien->norm }}</h6>
-                            <small>Nama</small>
-                            <h6>{{ $singlePasien->nama }}</h6>
-                            <small>Tanggal Lahir</small>
-                            <h6 id="tgl_lahir_show">{{ $singlePasien->tgl_lahir }}</h6>
-                            <small>Umur</small>
-                            <h6>{{ $singlePasien->umur }}</h6>
-                            <small>Tempat Lahir</small>
-                            <h6>{{ $tempat_lahir->name }}</h6>
-                            <small>Pekerjaan</small>
-                            <h6>{{ $singlePasien->pekerjaan }}</h6>
-                            <small>Nomor Telepon</small>
-                            <h6>{{ $singlePasien->nomor_telepon }}</h6>
-
-
-                        </div>
-                        <div class="col s12 m6">
-                            <small>Jenis Kelamin</small>
-                            <h6>{{ $jenis_kelamin->jenis_kelamin }}</h6>
-                            <small>Agama</small>
-                            <h6>{{ $agama->agama }}</h6>
-
-                            <small>Golongan Darah</small>
-                            <h6>{{ $golongan_darah->golongan_darah }}</h6>
-
                             <small>NIK</small>
-                            <h6>{{ $singlePasien->nik }}}</h6>
-                            <small>No. BPJS</small>
-                            <h6>{{ $singlePasien->nomor_bpjs }}</h6>
-
-                            <small>Nomor Telepon Keluarga</small>
-                            <h6>{{ $singlePasien->nomor_telepon_keluarga }}</h6>
-                        </div>
-
-
-                    </div>
-                    <hr>
-
-                    <div class="card-content row">
-                        <div class="col s12 m6">
-                            <small>Alamat Tetap</small>
-                            <h6>{{ $singlePasien->alamat_tetap }}</h6>
-                            <small>Desa Tetap</small>
-                            <h6>{{ $desa_tetap->name }}</h6>
-
-                            <small>Kecamatan Tetap</small>
-                            <h6>{{ $kecamatan_tetap->name }}</h6>
-                            <small>Kabupaten Tetap</small>
-                            <h6>{{ $kabupaten_tetap->name }}</h6>
-                            <small>Provinsi Tetap</small>
-                            <h6>{{ $provinsi_tetap->name }}</h6>
+                            <h6>{{ $singleSDM->nik }}</h6>
+                            <small>Nama</small>
+                            <h6>{{ $singleSDM->nama_sdm }}</h6>
+                            <small>Tanggal Lahir</small>
+                            <h6 id="tgl_lahir_show">{{ $singleSDM->tgl_lahir }}</h6>
+                            <small>Tempat Lahir</small>
+                            <h6>{{ $singleSDM->nama_tempat_lahir }}</h6>
+                            <small>Umur</small>
+                            <h6>{{ $singleSDM->umur }}</h6>
+                            <small>Jenis Kelamin</small>
+                            <h6>{{ $singleSDM->nama_jenis_kelamin }}</h6>
+                            <small>Jobdesk</small>
+                            <h6>{{ $singleSDM->nama_jabatan }}</h6>
+                            <small>Status Menikah</small>
+                            <h6>{{ $singleSDM->nama_status_nikah }}</h6>
 
 
                         </div>
                         <div class="col s12 m6">
-                            <small>Alamat Sementara</small>
-                            <h6>{{ $singlePasien->alamat_sementara }}</h6>
-                            <small>Desa Sementara</small>
-                            <h6>{{ $desa_klg->name }}</h6>
+                            <small>Nomor HP</small>
+                            <h6>{{ $singleSDM->nomor_hp }}</h6>
+                            <small>Golongan Darah</small>
+                            <h6>{{ $singleSDM->nama_golongan_darah }}</h6>
 
-                            <small>Kecamatan Sementara</small>
-                            <h6>{{ $kecamatan_klg->name }}</h6>
-                            <small>Kabupaten Sementara</small>
-                            <h6>{{ $kabupaten_klg->name }}</h6>
-                            <small>Provinsi Sementara</small>
-                            <h6>{{ $provinsi_klg->name }}</h6>
+                            <small>Agama</small>
+                            <h6>{{ $singleSDM->nama_agama }}</h6>
+
+                            <small>Nama Desa</small>
+                            <h6>{{ $singleSDM->nama_desa }}</h6>
+                            <small>Nama Kecamatan</small>
+                            <h6>{{ $singleSDM->nama_kecamatan }}</h6>
+                            <small>Nama Kabupaten</small>
+                            <h6>{{ $singleSDM->nama_kabupaten }}</h6>
+                            <small>Nama Provinsi</small>
+                            <h6>{{ $singleSDM->nama_provinsi }}</h6>
+
 
 
                         </div>
@@ -102,29 +74,10 @@ Halaman Detail Pasien
 
                     </div>
                     <hr>
-                    <div class="card-content row">
 
-                        <div class="col s12 m6">
-                            <small>Alamat Keluarga</small>
-                            <h6>{{ $singlePasien->alamat_keluarga }}</h6>
-                            <small>Desa Keluarga</small>
-                            <h6>{{ $desa_smt->name }}</h6>
-
-                            <small>Kecamatan Keluarga</small>
-                            <h6>{{ $kecamatan_smt->name }}</h6>
-                            <small>Kabupaten Keluarga</small>
-                            <h6>{{ $kabupaten_smt->name }}</h6>
-                            <small>Provinsi Keluarga</small>
-                            <h6>{{ $provinsi_smt->name }}</h6>
-
-
-                        </div>
-
-
-                    </div>
                 </div>
             </div>
-            <div class="col s12">
+            {{-- <div class="col s12">
                 <div class="card">
                     <div class="row">
                         <div class="col s12">
@@ -343,7 +296,7 @@ Halaman Detail Pasien
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- ============================================================== -->

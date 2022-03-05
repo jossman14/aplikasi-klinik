@@ -248,6 +248,24 @@ Halaman Tambah Pasien
                                     </div>
 
                                 </div>
+                                <div class="row">
+                                    <div class="col s12 m6">
+                                        <div class="input-field col s12">
+                                            <select required class="custom-select form-control" id="status_nikah"
+                                                name="status_nikah">
+                                                <option disabled selected>Pilih Status Menikah</option>
+                                                @foreach($status_nikah as $item)
+
+                                                <option value="{{ $item->id }}"
+                                                    {{ $singlePasien->status_nikah == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama }}</option>
+                                                @endforeach
+                                            </select>
+                                            <label for="sapaan"> Status Menikah : <span class="danger">*</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <hr>
 
 
