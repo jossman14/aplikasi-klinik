@@ -29,15 +29,8 @@ class SDMController extends Controller
             "jabatan" => DB::table("jabatan")->where("deleted_at","=",null)->get(),
             "agama" => DB::table("agama")->where("deleted_at","=",null)->get(),
             "status_nikah" => DB::table("status_nikah")->where("deleted_at","=",null)->get(),
-            "keterangan" => "Tabel ini hanya menampilkan 10 data SDM dengan  total data ". "<span class='green white-text p-l-10 p-r-10'>" . DB::table("sdm")->where("deleted_at","=",null)->count() . "</span>",
+            "keterangan" => "Tabel ini hanya menampilkan data SDM dengan  total data ". "<span class='green white-text p-l-10 p-r-10'>" . DB::table("sdm")->where("deleted_at","=",null)->count() . "</span>",
         ];
-
-        // dd(DB::table('sdm')->get());
-
-
-
-        // dd(DB::table("sdm")->select("tgl_reg")->orderBy("tgl_reg","asc")->first()->tgl_reg);
-
 
         return view("sdm.index", $data);
     }
@@ -73,7 +66,6 @@ class SDMController extends Controller
 
 
 
-        // $cariData = DB::table("sdm")->where("sdm","LIKE", "%". $cari["sdm"]."%")->where("deleted_at","=",null)->get()
         $cariData = DB::table('sdm')->select("sdm.sdm_id", "sdm.nama_sdm", "sdm.jobdesk", "sdm.nomor_hp", "sdm.desa_sdm_id", "villages.id", "villages.name as nama_desa", "jabatan.nama as nama_jabatan")->join("villages", "villages.id", "=", "sdm.desa_sdm_id")->join("jabatan", "jabatan.id", "=", "sdm.jobdesk")->where([
             ["nama_sdm", "LIKE", "%".$cari["nama_sdm"]."%"],
             ["alamat_sdm", "LIKE", "%".$cari["alamat_sdm"]."%"],
@@ -106,9 +98,7 @@ class SDMController extends Controller
             "keterangan" => "Tabel menampilkan hasil pencarian " . count($cariData)." data dengan filter pencarian",
         ];
 
-        // return redirect()
-        //         ->route('sdm.index');
-
+        // dd($data['sdm']);
 
         return view("sdm.index", $data);
     }

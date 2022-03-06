@@ -121,10 +121,10 @@ class SoapPerawatController extends Controller
         return view("soap_perawat.create", $data);
     }
 
-    public function createSoapPerawat(Int $id)
+    public function createSoapPerawat(Int $id, Int $id1)
     {
         $data = [
-            "daftar_periksa" => DB::table('daftar_periksa')->select("daftar_periksa.id","daftar_periksa.id_pasien","daftar_periksa.waktu_daftar_periksa", "pasien.nama as nama_pasien", "pasien.nik", "pasien.norm", "poliklinik.nama as poli", "sdm.nama_sdm as nama_dokter",  "daftar_periksa.cara_bayar", "daftar_periksa.rujukan",  "daftar_periksa.penanggungjawab")->join("pasien","pasien.id","=", "daftar_periksa.id_pasien")->join("sdm","sdm.sdm_id","=", "daftar_periksa.id_dokter")->join("poliklinik","poliklinik.id","=", "daftar_periksa.id_poli")->where("daftar_periksa.id_pasien","=",$id)->where("daftar_periksa.deleted_at","=",null)->orderBy("daftar_periksa.id","DESC")->first(),
+            "daftar_periksa" => DB::table('daftar_periksa')->select("daftar_periksa.id","daftar_periksa.id_pasien","daftar_periksa.waktu_daftar_periksa", "pasien.nama as nama_pasien", "pasien.nik", "pasien.norm", "poliklinik.nama as poli", "sdm.nama_sdm as nama_dokter",  "daftar_periksa.cara_bayar", "daftar_periksa.rujukan",  "daftar_periksa.penanggungjawab")->join("pasien","pasien.id","=", "daftar_periksa.id_pasien")->join("sdm","sdm.sdm_id","=", "daftar_periksa.id_dokter")->join("poliklinik","poliklinik.id","=", "daftar_periksa.id_poli")->where("daftar_periksa.id_pasien","=",$id)->where("daftar_periksa.id","=", $id1)->where("daftar_periksa.deleted_at","=",null)->orderBy("daftar_periksa.id","DESC")->first(),
         ];
 
         // dd($data);

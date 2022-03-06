@@ -468,8 +468,7 @@ Halaman Detail Pasien
     <!-- ============================================================== -->
     <!-- Container fluid scss in scafholding.scss -->
     <!-- ============================================================== -->
-    <footer class="center-align m-b-30">All Rights Reserved by Materialart. Designed and Developed by <a
-            href="https://wrappixel.com">WrapPixel</a>.</footer>
+    <footer class="center-align m-b-30">Theme designed and developed by Materialart and WrapPixel. System Developed by JozApp &copy; <span id="yearFooter"></span></footer>
 </div>
 @endsection
 
@@ -537,6 +536,7 @@ Halaman Detail Pasien
     });
 
     var tableSearchingDokter = $('.cariTableDokter').DataTable({
+        // width: '100%',
             dom: 'B<"clear">lfrtip',
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
@@ -545,7 +545,7 @@ Halaman Detail Pasien
             serverSide: true,
 
             columnDefs: [{
-                "targets": [1, 2],
+                "targets": [0, 1, 2],
                 "visible": false
             }],
             ajax: "{{ route('showSoapDokter', $singlePasien->id) }}",
@@ -600,7 +600,7 @@ Halaman Detail Pasien
             }
         });
 
-        $('.cariTable tbody').on('mouseover', 'tr', function () {
+        $('.cariTableDokter tbody').on('mouseover', 'tr', function () {
             var data = tableSearchingDokter.row(this).data();
             // alert(data["id"]);
             $(".edit").attr("href", "{{ route('soap_dokter.index') }}/" + data[
@@ -730,10 +730,10 @@ Halaman Detail Pasien
             // alert(data["id"]);
             $(".soap_perawat_btn").attr("href",
                 "{{ route('soap_perawat.index') }}/soap_perawat_baru/" + data[
-                    'id_pasien']);
+                    'id_pasien'] + "/" + data["id"]);
             $(".soap_dokter_btn").attr("href", "{{ route('soap_dokter.index') }}/soap_dokter_baru/" +
                 data[
-                    'id_pasien']);
+                    'id_pasien'] + "/" + data["id"]);
 
             $('.show_confirm').click(function (event) {
                 var form = $(this).closest("form");

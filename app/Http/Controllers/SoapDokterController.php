@@ -180,44 +180,30 @@ class SoapDokterController extends Controller
         return view("soap_dokter.create", $data);
     }
 
-    public function createSoapDokter(Int $id)
+    public function createSoapDokter(Int $id, Int $id1)
     {
 
-        // dd($id);
+        // dd($id1);
         $data = [
-            "soap_dokter" => DB::table('soap_dokter')->select(
+            "soap_dokter" => DB::table('daftar_periksa')->select(
                 "daftar_periksa.id",
-                "soap_dokter.id_daftar",
-
                 "daftar_periksa.waktu_daftar_periksa",
                 "daftar_periksa.id_pasien",
                 "pasien.nama as nama_pasien",
                 "poliklinik.nama as nama_poliklinik",
                 "sdm.nama_sdm as nama_dokter",
 
-                "soap_dokter.anamnesa",
-                "soap_dokter.diagnosa",
-                "soap_dokter.tindakan",
-                "soap_dokter.obat",
-                "soap_dokter.planning",
-                "soap_dokter.keluar",
-
-
-
             )
-            ->join("daftar_periksa","daftar_periksa.id","=","soap_dokter.id_daftar")
+            // ->join("daftar_periksa","daftar_periksa.id","=","soap_dokter.id_daftar")
             ->join("pasien","pasien.id","=","daftar_periksa.id_pasien")
             ->join("sdm","sdm.sdm_id","=", "daftar_periksa.id_dokter")
             ->join("poliklinik","poliklinik.id","=", "daftar_periksa.id_poli")
-
-            // ->join("riwayat_tindakan","riwayat_tindakan.id_daftar","=","soap_dokter.tindakan")
-            // ->join("riwayat_diagnosa","riwayat_diagnosa.id_daftar","=","soap_dokter.diagnosa")
-            // ->join("riwayat_obat","riwayat_obat.id_daftar","=","soap_dokter.obat")
+            ->where("daftar_periksa.id","=",$id1)
             ->where("daftar_periksa.id_pasien","=",$id)
-            ->where("soap_dokter.deleted_at","=",null)->orderBy("soap_dokter.id","desc")->first(),
+            ->where("daftar_periksa.deleted_at","=",null)->orderBy("daftar_periksa.id","desc")->first(),
         ];
 
-        dd($data["soap_dokter"]);
+        // dd($data["soap_dokter"]);
 
         return view("soap_dokter.create", $data);
     }
@@ -278,7 +264,7 @@ DB::table("transaksi")->insert([
 
         foreach($request->obat as $key => $value) {
 
-            $harga = DB::table("tindakan")->select("harga_jual")->where("id",'=',$value)->first();
+            $harga = DB::table("obat_detail")->select("harga_jual")->where("id",'=',$value)->first();
 $harga_akhir = $harga->harga_jual * $request->jumlah_obat[$key];
 DB::table("transaksi")->insert([
     "waktu_transaksi" => date('Y-m-d H:i:s'),

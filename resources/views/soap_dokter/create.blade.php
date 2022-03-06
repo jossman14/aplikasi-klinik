@@ -53,7 +53,7 @@ Halaman Tambah Data Soap Dokter
                                 "soap_dokter.planning",
                                 "soap_dokter.keluar", --}}
 
-                                {{-- <input type="hidden" name="id_daftar" value="{{ $soap_dokter->id }}"> --}}
+                                <input type="hidden" name="id_daftar" value="{{ $soap_dokter->id }}">
                                 <input type="hidden" name="id_pasien" value="{{ $soap_dokter->id_pasien }}">
                                 <div class="input-field col s12">
                                     <input type="date" class="waktu_daftar_periksa" id="waktu_tindakan"

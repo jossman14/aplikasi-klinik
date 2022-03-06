@@ -71,9 +71,9 @@ Route::resource('soap_dokter', SoapDokterController::class);
 Route::resource('transaksi', TransaksiController::class);
 
 Route::get('daftar_periksa/daftar_periksa_baru/{pasien}', [DaftarPeriksaController::class, 'daftar'])->name("daftarPeriksa");
-Route::get('soap_perawat/soap_perawat_baru/{id}', [SoapPerawatController::class, 'createSoapPerawat'])->name("createSoapPerawat");
+Route::get('soap_perawat/soap_perawat_baru/{id}/{id1}', [SoapPerawatController::class, 'createSoapPerawat'])->name("createSoapPerawat");
 Route::get('soap_perawat/soap_perawat_pasien/{id}', [SoapPerawatController::class, 'showSoapPerawat'])->name("showSoapPerawat");
-Route::get('soap_dokter/soap_dokter_baru/{id}', [SoapDokterController::class, 'createSoapDokter'])->name("createSoapDokter");
+Route::get('soap_dokter/soap_dokter_baru/{id}/{id1}', [SoapDokterController::class, 'createSoapDokter'])->name("createSoapDokter");
 Route::get('soap_dokter/soap_dokter_pasien/{id}', [SoapDokterController::class, 'showSoapDokter'])->name("showSoapDokter");
 
 
@@ -99,3 +99,7 @@ Route::post('/transaksiFilter', [TransaksiController::class, "transaksiFilter"])
 
 Route::get('halaman_daftar_periksa/utama', [DaftarPeriksaController::class, 'indexDaftarPeriksa'])->name("indexDaftarPeriksa");
 Route::get('halaman_daftar_periksa/show/{id}', [DaftarPeriksaController::class, 'showDaftarPeriksa'])->name("showDaftarPeriksa");
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

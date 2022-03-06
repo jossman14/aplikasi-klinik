@@ -103,7 +103,7 @@ Halaman Utama Pasien
                                                         data-toggle="tooltip" data-original-title="delete"
                                                         title='Delete'><i class="ti-close" aria-hidden="true"></i></a>
 
-                                                  
+
                                                 </form>
 
 
@@ -290,8 +290,7 @@ Halaman Utama Pasien
     <!-- ============================================================== -->
     <!-- Container fluid scss in scafholding.scss -->
     <!-- ============================================================== -->
-    <footer class="center-align m-b-30">All Rights Reserved by Materialart. Designed and Developed by <a
-            href="https://wrappixel.com">WrapPixel</a>.</footer>
+    <footer class="center-align m-b-30">Theme designed and developed by Materialart and WrapPixel. System Developed by JozApp &copy; <span id="yearFooter"></span></footer>
 </div>
 @endsection
 

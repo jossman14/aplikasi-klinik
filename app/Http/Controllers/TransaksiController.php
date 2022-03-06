@@ -26,21 +26,21 @@ class TransaksiController extends Controller
                 "tindakan.nama as nama_tindakan",
 
 
-                // "riwayat_obat.jumlah as jumlah_obat",
-
 
                 "pasien.nama as nama_pasien",
                 "poliklinik.nama as nama_poliklinik",
                 "sdm.nama_sdm as nama_dokter",
 
             )
-            ->join("riwayat_tindakan","riwayat_tindakan.id","=","transaksi.id_riwayat")
+            // ->where("transaksi.jenis_transaksi","=",2)
+            ->join("riwayat_tindakan","riwayat_tindakan.id_tindakan","=","transaksi.id_riwayat")
             ->join("tindakan","tindakan.id","=","riwayat_tindakan.id_tindakan")
             ->join("daftar_periksa","daftar_periksa.id","=","transaksi.id_daftar")
             ->join("pasien","pasien.id","=","daftar_periksa.id_pasien")
             ->join("sdm","sdm.sdm_id","=", "daftar_periksa.id_dokter")
             ->join("poliklinik","poliklinik.id","=", "daftar_periksa.id_poli")
             ->where("transaksi.jenis_transaksi","=",2)
+
             ->where("transaksi.deleted_at","=",null)->orderBy("transaksi.id","desc")->get(),
 
             "transaksi_obat" => DB::table('transaksi')
@@ -53,15 +53,13 @@ class TransaksiController extends Controller
                 "obat_detail.nama as nama_obat",
 
 
-                // "riwayat_obat.jumlah as jumlah_obat",
-
 
                 "pasien.nama as nama_pasien",
                 "poliklinik.nama as nama_poliklinik",
                 "sdm.nama_sdm as nama_dokter",
 
             )
-            ->join("riwayat_obat","riwayat_obat.id","=","transaksi.id_riwayat")
+            ->join("riwayat_obat","riwayat_obat.id_obat","=","transaksi.id_riwayat")
             ->join("obat_detail","obat_detail.id","=","riwayat_obat.id_obat")
             ->join("daftar_periksa","daftar_periksa.id","=","transaksi.id_daftar")
             ->join("pasien","pasien.id","=","daftar_periksa.id_pasien")

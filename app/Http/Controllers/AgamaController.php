@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class AgamaController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *

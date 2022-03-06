@@ -10,12 +10,9 @@
     <title>Klinik Gigi | @yield('judul-halaman')</title>
     <link href="{{ asset('template') }}/dist/css/style.css" rel="stylesheet">
     <style>
-        .ScrollStyle {
-            width: 300px;
-            height: 1000px;
-            overflow-y: scroll;
-            overflow: scroll;
-        }
+        .center {
+            text-align: center;
+}
 
     </style>
     @yield('halaman-css')
@@ -53,19 +50,10 @@
                     <!-- ============================================================== -->
                     <!-- Logo you can find that scss in header.scss -->
                     <!-- ============================================================== -->
-                    <a href="javascript:void(0)" class="brand-logo">
-                        <span class="icon">
-                            <img class="light-logo"
-                                src="{{ asset('template') }}/assets/images/logo-light-icon.png">
-                            <img class="dark-logo"
-                                src="{{ asset('template') }}/assets/images/logo-icon.png">
-                        </span>
-                        <span class="text">
-                            <img class="light-logo"
-                                src="{{ asset('template') }}/assets/images/logo-light-text.png">
-                            <img class="dark-logo"
-                                src="{{ asset('template') }}/assets/images/logo-text.png">
-                        </span>
+                    <a href="javascript:void(0)" class="brand-logo col justify-content-center">
+                        <center>
+                            <h2 class="white-text m-t-15">KLINIK</h2>
+                        </center>
                     </a>
                     <!-- ============================================================== -->
                     <!-- Logo you can find that scss in header.scss -->
@@ -73,219 +61,14 @@
                     <!-- ============================================================== -->
                     <!-- Left topbar icon scss in header.scss -->
                     <!-- ============================================================== -->
-                    <ul class="left">
-                        <li class="hide-on-med-and-down">
-                            <a href="javascript: void(0);" class="nav-toggle">
-                                <span class="bars bar1"></span>
-                                <span class="bars bar2"></span>
-                                <span class="bars bar3"></span>
-                            </a>
-                        </li>
-                        <li class="hide-on-large-only">
-                            <a href="javascript: void(0);" class="sidebar-toggle">
-                                <span class="bars bar1"></span>
-                                <span class="bars bar2"></span>
-                                <span class="bars bar3"></span>
-                            </a>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- Notification icon scss in header.scss -->
-                        <!-- ============================================================== -->
-                        <li><a class="dropdown-trigger" href="javascript: void(0);" data-target="noti_dropdown"><i
-                                    class="material-icons">notifications</i></a>
-                            <ul id="noti_dropdown" class="mailbox dropdown-content">
-                                <li>
-                                    <div class="drop-title">Notifications</div>
-                                </li>
-                                <li>
-                                    <div class="message-center">
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <span class="btn-floating btn-large red"><i
-                                                    class="material-icons">link</i></span>
-                                            <span class="mail-contnet">
-                                                <h5>Launch Admin</h5>
-                                                <span class="mail-desc">Just see the my new admin!</span> <span
-                                                    class="time">9:30 AM</span>
-                                            </span>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <span class="btn-floating btn-large blue"><i
-                                                    class="material-icons">date_range</i></span>
-                                            <span class="mail-contnet">
-                                                <h5>Event today</h5>
-                                                <span class="mail-desc">Just a reminder that you have event</span>
-                                                <span class="time">9:10 AM</span>
-                                            </span>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <span class="btn-floating btn-large cyan"><i
-                                                    class="material-icons">settings</i></span>
-                                            <span class="mail-contnet">
-                                                <h5>Settings</h5>
-                                                <span class="mail-desc">You can customize this template as you
-                                                    want</span>
-                                                <span class="time">9:08 AM</span>
-                                            </span>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <span class="btn-floating btn-large green"><i
-                                                    class="material-icons">face</i></span>
-                                            <span class="mail-contnet">
-                                                <h5>Lily Jordan</h5>
-                                                <span class="mail-desc">Just see the my admin!</span>
-                                                <span class="time">9:02 AM</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="center-align" href="javascript:void(0);"> <strong>Check all
-                                            notifications</strong> </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- Comment topbar icon scss in header.scss -->
-                        <!-- ============================================================== -->
-                        <li><a class="dropdown-trigger" href="javascript: void(0);" data-target="msg_dropdown"><i
-                                    class="material-icons">comment</i></a>
-                            <ul id="msg_dropdown" class="mailbox dropdown-content">
-                                <li>
-                                    <div class="drop-title">You have 4 new messages</div>
-                                </li>
-                                <li>
-                                    <div class="message-center">
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <span class="user-img">
-                                                <img src="{{ asset('template') }}/assets/images/users/1.jpg"
-                                                    alt="user" class="circle">
-                                                <span class="profile-status online pull-right"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Chris Evans</h5>
-                                                <span class="mail-desc">Just see the my admin!</span>
-                                                <span class="time">9:30 AM</span>
-                                            </span>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <span class="user-img">
-                                                <img src="{{ asset('template') }}/assets/images/users/2.jpg"
-                                                    alt="user" class="circle">
-                                                <span class="profile-status busy pull-right"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Ray Hudson</h5>
-                                                <span class="mail-desc">I've sung a song! See you at</span>
-                                                <span class="time">9:10 AM</span>
-                                            </span>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <span class="user-img">
-                                                <img src="{{ asset('template') }}/assets/images/users/3.jpg"
-                                                    alt="user" class="circle">
-                                                <span class="profile-status away pull-right"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Lb James</h5>
-                                                <span class="mail-desc">I am a singer!</span>
-                                                <span class="time">9:08 AM</span>
-                                            </span>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <span class="user-img">
-                                                <img src="{{ asset('template') }}/assets/images/users/4.jpg"
-                                                    alt="user" class="circle">
-                                                <span class="profile-status offline pull-right"></span>
-                                            </span>
-                                            <span class="mail-contnet">
-                                                <h5>Don Andres</h5>
-                                                <span class="mail-desc">Just see the my admin!</span>
-                                                <span class="time">9:02 AM</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="center-align" href="javascript:void(0);"> <strong>See all e-Mails</strong>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="search-box">
-                            <a href="javascript: void(0);"><i class="material-icons">search</i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
-                                    class="srh-btn"><i class="fas fa-times"></i></a>
-                            </form>
-                        </li>
-                    </ul>
+
                     <!-- ============================================================== -->
                     <!-- Left topbar icon scss in header.scss -->
                     <!-- ============================================================== -->
                     <!-- ============================================================== -->
                     <!-- Right topbar icon scss in header.scss -->
                     <!-- ============================================================== -->
-                    <ul class="right">
-                        <li class="lang-dropdown"><a class="dropdown-trigger" href="javascript: void(0);"
-                                data-target="lang_dropdown"><i class="flag-icon flag-icon-us"></i></a>
-                            <ul id="lang_dropdown" class="dropdown-content">
-                                <li>
-                                    <a href="#!" class="grey-text text-darken-1">
-                                        <i class="flag-icon flag-icon-us"></i> English</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="grey-text text-darken-1">
-                                        <i class="flag-icon flag-icon-fr"></i> French</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="grey-text text-darken-1">
-                                        <i class="flag-icon flag-icon-es"></i> Spanish</a>
-                                </li>
-                                <li>
-                                    <a href="#!" class="grey-text text-darken-1">
-                                        <i class="flag-icon flag-icon-de"></i> German</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- Profile icon scss in header.scss -->
-                        <!-- ============================================================== -->
-                        <li><a class="dropdown-trigger" href="javascript: void(0);" data-target="user_dropdown"><img
-                                    src="{{ asset('template') }}/assets/images/users/2.jpg" alt="user"
-                                    class="circle profile-pic"></a>
-                            <ul id="user_dropdown" class="mailbox dropdown-content dropdown-user">
-                                <li>
-                                    <div class="dw-user-box">
-                                        <div class="u-img"><img
-                                                src="{{ asset('template') }}/assets/images/users/2.jpg"
-                                                alt="user"></div>
-                                        <div class="u-text">
-                                            <h4>Steve Harvey</h4>
-                                            <p>steve@gmail.com</p>
-                                            <a class="waves-effect waves-light btn-small red white-text">View
-                                                Profile</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#"><i class="material-icons">account_circle</i> My Profile</a></li>
-                                <li><a href="#"><i class="material-icons">account_balance_wallet</i> My Balance</a></li>
-                                <li><a href="#"><i class="material-icons">inbox</i> Inbox</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#"><i class="material-icons">settings</i> Account Setting</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#"><i class="material-icons">power_settings_new</i> Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+
                     <!-- ============================================================== -->
                     <!-- Right topbar icon scss in header.scss -->
                     <!-- ============================================================== -->
@@ -325,11 +108,14 @@
                                     class="material-icons">photo_size_select_small</i><span class="hide-menu">Manajemen
                                     Pasien</span></a></li>
                         <li><a href="{{ route('daftar_periksa.index') }}"><i
-                                    class="material-icons">photo_size_select_small</i><span class="hide-menu">Daftar
+                                    class="material-icons">add_circle</i><span class="hide-menu">Daftar
                                     Periksa Baru</span></a></li>
                         <li><a href="{{ route('indexDaftarPeriksa') }}"><i
-                                    class="material-icons">photo_size_select_small</i><span class="hide-menu">Daftar
+                                    class="material-icons">account_box</i><span class="hide-menu">Daftar
                                     Pasien Periksa</span></a></li>
+                        <li><a href="{{ route('poliklinik.index') }}"><i
+                                    class="material-icons">assistant_photo</i><span
+                                    class="hide-menu">Poliklinik</span></a></li>
                     </ul>
     </div>
     </li>
@@ -340,47 +126,69 @@
             </span></a>
         <div class="collapsible-body">
             <ul>
-                {{-- <li><a href="{{route('sdm.index') }}"><i
-                    class="material-icons">picture_in_picture</i><span class="hide-menu">Daftar Periksa</span></a>
-    </li> --}}
-    <li><a href="{{ route('sdm.index') }}"><i class="material-icons">verified_user</i><span
-                class="hide-menu">Manajemen SDM</span></a></li>
-    </ul>
-    </div>
+
+                <li><a href="{{ route('sdm.index') }}"><i
+                            class="material-icons">verified_user</i><span class="hide-menu">Manajemen SDM</span></a>
+                </li>
+            </ul>
+        </div>
     </li>
     <li
         class="{{ request()->is("transaksi.index") or request()->is("transaksi.create") or request()->is("transaksi.edit") or request()->is("transaksi.show") ? 'active' : '' }}">
-        <a href="javascript:void(0)" class="collapsible-header has-arrow"><i class="material-icons">view_agenda</i><span
-                class="hide-menu"> Transaksi
+        <a href="javascript:void(0)" class="collapsible-header has-arrow"><i
+                class="material-icons">account_balance_wallet</i><span class="hide-menu"> Transaksi
             </span></a>
         <div class="collapsible-body">
             <ul>
                 {{-- <li><a href="{{route('transaksi.index') }}"><i
                     class="material-icons">picture_in_picture</i><span class="hide-menu">Daftar Periksa</span></a>
     </li> --}}
-    <li><a href="{{ route('transaksi.index') }}"><i class="material-icons">verified_user</i><span
+    <li><a href="{{ route('transaksi.index') }}"><i class="material-icons">adjust</i><span
                 class="hide-menu">Manajemen Transaksi</span></a></li>
     </ul>
     </div>
     </li>
     <li
         class="{{ request()->is("sdm.index") or request()->is("sdm.create") or request()->is("sdm.edit") or request()->is("sdm.show") ? 'active' : '' }}">
-        <a href="javascript:void(0)" class="collapsible-header has-arrow"><i class="material-icons">view_agenda</i><span
-                class="hide-menu"> Tindakan
+        <a href="javascript:void(0)" class="collapsible-header has-arrow"><i
+                class="material-icons">airline_seat_recline_extra</i><span class="hide-menu"> Tindakan
             </span></a>
         <div class="collapsible-body">
             <ul>
-                {{-- <li><a href="{{route('sdm.index') }}"><i
-                    class="material-icons">picture_in_picture</i><span class="hide-menu">Daftar Periksa</span></a>
-    </li> --}}
-    <li><a href="{{ route('tindakan.index') }}"><i class="material-icons">verified_user</i><span
-                class="hide-menu">Manajemen Tindakan</span></a></li>
-    <li><a href="{{ route('soap_dokter.index') }}"><i class="material-icons">verified_user</i><span
-                class="hide-menu">Soap Dokter</span></a></li>
-    <li><a href="{{ route('soap_perawat.index') }}"><i class="material-icons">verified_user</i><span
-                class="hide-menu">Soap Perawat</span></a></li>
-    </ul>
-    </div>
+
+                <li><a href="{{ route('tindakan.index') }}"><i
+                            class="material-icons">assignment_late</i><span class="hide-menu">Manajemen
+                            Tindakan</span></a></li>
+                <li><a href="{{ route('soap_dokter.index') }}"><i
+                            class="material-icons">assignment_turned_in</i><span class="hide-menu">Soap
+                            Dokter</span></a></li>
+                <li><a href="{{ route('soap_perawat.index') }}"><i
+                            class="material-icons">assistant</i><span class="hide-menu">Soap Perawat</span></a></li>
+                <li><a href="{{ route('jenis_tindakan.index') }}"><i
+                            class="material-icons">data_usage</i><span class="hide-menu">Jenis Tindakan</span></a></li>
+            </ul>
+        </div>
+    </li>
+    <li
+        class="{{ request()->is("obat_detail.index") or request()->is("obat_detail.create") or request()->is("obat_detail.edit") or request()->is("obat_detail.show") ? 'active' : '' }}">
+        <a href="javascript:void(0)" class="collapsible-header has-arrow"><i
+                class="material-icons">blur_circular</i><span class="hide-menu"> Obat
+            </span></a>
+        <div class="collapsible-body">
+            <ul>
+
+                <li><a href="{{ route('obat_detail.index') }}"><i
+                            class="material-icons">autorenew</i><span class="hide-menu">Obat Detail</span></a></li>
+                <li><a href="{{ route('satuan_obat.index') }}"><i
+                            class="material-icons">device_hub</i><span class="hide-menu">Satuan Obat</span></a></li>
+                <li><a href="{{ route('jenis_obat.index') }}"><i
+                            class="material-icons">crop_free</i><span class="hide-menu">Jenis Obat</span></a></li>
+                <li><a href="{{ route('penyedia_obat.index') }}"><i
+                            class="material-icons">developer_board</i><span class="hide-menu">Penyedia Obat</span></a>
+                </li>
+
+            </ul>
+        </div>
     </li>
     <li class="">
         <a href="javascript:void(0)" class="collapsible-header has-arrow"><i class="material-icons">filter_list</i><span
@@ -388,55 +196,49 @@
             </span></a>
         <div class="collapsible-body">
             <ul>
-                {{-- <li><a href="{{route('agama.index') }}"><i
-                    class="material-icons">picture_in_picture</i><span class="hide-menu">Daftar Periksa</span></a>
-    </li> --}}
-    <li><a href="{{ route('agama.index') }}"><i class="material-icons">filter_tilt_shift</i><span
-                class="hide-menu">Agama</span></a></li>
-    <li><a href="{{ route('jenis_kelamin.index') }}"><i class="material-icons">filter_vintage</i><span
-                class="hide-menu">Jenis Kelamin</span></a></li>
-    <li><a href="{{ route('golongan_darah.index') }}"><i class="material-icons">spa</i><span
-                class="hide-menu">Golongan Darah</span></a></li>
-    <li><a href="{{ route('sapaan.index') }}"><i class="material-icons">sort_by_alpha</i><span
-                class="hide-menu">Sapaan</span></a></li>
-    <li><a href="{{ route('jabatan.index') }}"><i class="material-icons">streetview</i><span
-                class="hide-menu">Jabatan</span></a></li>
-    <li><a href="{{ route('jenis_obat.index') }}"><i class="material-icons">crop_free</i><span
-                class="hide-menu">Jenis Obat</span></a></li>
-    <li><a href="{{ route('jenis_tindakan.index') }}"><i class="material-icons">data_usage</i><span
-                class="hide-menu">Jenis Tindakan</span></a></li>
-    <li><a href="{{ route('jenis_transaksi.index') }}"><i class="material-icons">details</i><span
-                class="hide-menu">Jenis Transaksi</span></a></li>
-    <li><a href="{{ route('penyedia_obat.index') }}"><i
-                class="material-icons">developer_board</i><span class="hide-menu">Penyedia Obat</span></a></li>
-    <li><a href="{{ route('pengeluaran_berulang.index') }}"><i
-                class="material-icons">crop_rotate</i><span class="hide-menu">Pengeluaran Berulang</span></a></li>
-    <li><a href="{{ route('satuan_obat.index') }}"><i class="material-icons">device_hub</i><span
-                class="hide-menu">Satuan Obat</span></a></li>
-    <li><a href="{{ route('obat_detail.index') }}"><i class="material-icons">device_hub</i><span
-                class="hide-menu">Obat Detail</span></a></li>
-    <li><a href="{{ route('poliklinik.index') }}"><i class="material-icons">device_hub</i><span
-                class="hide-menu">Poliklinik</span></a></li>
-    <li><a href="{{ route('status_nikah.index') }}"><i class="material-icons">device_hub</i><span
-                class="hide-menu">Status Nikah</span></a></li>
 
-    </ul>
-    </div>
+                <li><a href="{{ route('agama.index') }}"><i
+                            class="material-icons">filter_tilt_shift</i><span class="hide-menu">Agama</span></a></li>
+                <li><a href="{{ route('jenis_kelamin.index') }}"><i
+                            class="material-icons">filter_vintage</i><span class="hide-menu">Jenis Kelamin</span></a>
+                </li>
+                <li><a href="{{ route('golongan_darah.index') }}"><i
+                            class="material-icons">spa</i><span class="hide-menu">Golongan Darah</span></a></li>
+                <li><a href="{{ route('sapaan.index') }}"><i
+                            class="material-icons">sort_by_alpha</i><span class="hide-menu">Sapaan</span></a></li>
+                <li><a href="{{ route('jabatan.index') }}"><i
+                            class="material-icons">streetview</i><span class="hide-menu">Jabatan</span></a></li>
+
+
+
+
+
+
+
+                <li><a href="{{ route('status_nikah.index') }}"><i
+                            class="material-icons">assignment_ind</i><span class="hide-menu">Status Nikah</span></a>
+                </li>
+
+            </ul>
+        </div>
     </li>
 
-
-
-
-    <li class="small-cap"><span class="hide-menu">Single Link</span></li>
     <li>
-        <a href="{{ asset('template') }}/docs/documentation.html" class="collapsible-header"><i
-                class="material-icons">content_paste</i><span class="hide-menu"> Documentation
-            </span></a>
+
+            <a class="collapsible-header" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                <i class="material-icons">directions</i><span class="hide-menu"> Log Out </span>
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+
     </li>
-    <li>
-        <a href="logout.html" class="collapsible-header"><i class="material-icons">directions</i><span
-                class="hide-menu"> Log Out </span></a>
-    </li>
+
+
+
 
     </ul>
     </li>
@@ -609,6 +411,11 @@
     <!-- ============================================================== -->
 
     @yield('halaman-js')
+    <script>
+        $(function () {
+            $("#yearFooter").html(new Date().getFullYear());
+        });
+    </script>
 </body>
 
 </html>
