@@ -43,8 +43,8 @@ Halaman Tambah Pasien
                                         <div class="col s12">
                                             <div class="input-field col s12">
                                                 <input type="text" class="norm" id="norm" name="norm"
-                                                    value="RM{{ strval(sprintf('%07d', $singlePasien->id)); }}"
-                                                    readonly>
+                                                    value="RM{{ strval(sprintf('%06d', $singlePasien->id)); }}"
+                                                    >
                                                 <label for="norm"> No RM : (tidak bisa ubah) <span
                                                         class="danger">*</span>
                                                 </label>
@@ -93,7 +93,7 @@ Halaman Tambah Pasien
                                     </div>
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <input type="text" class="umur" id="umur" name="umur" readonly
+                                            <input type="text" class="umur" id="umur" name="umur"
                                                 value="{{ old('umur', $singlePasien->umur) }}">
                                             <label for="umur"> Umur : (Otomatis)<span class="danger"></span>
                                             </label>

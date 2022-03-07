@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16"
-        href="{{ asset('template') }}/assets/images/k2.png">
+        href="{{ asset('template') }}/assets/images/fav-klinik.png">
     <title>Klinik Gigi | @yield('judul-halaman')</title>
     <link href="{{ asset('template') }}/dist/css/style.css" rel="stylesheet">
     <style>
@@ -51,8 +51,14 @@
                     <!-- Logo you can find that scss in header.scss -->
                     <!-- ============================================================== -->
                     <a href="javascript:void(0)" class="brand-logo col justify-content-center">
-                        <center>
-                            <h2 class="white-text m-t-15">KLINIK</h2>
+                        <center class="">
+                            {{-- <h2 class="white-text m-t-15">KLINIK</h2> --}}
+                            <div class="icon">
+                                <img width="80%" class="light-logo"
+                                    src="{{ asset('template') }}/assets/images/logo-gigi.png">
+                                <img width="80%" class="dark-logo"
+                                    src="{{ asset('template') }}/assets/images/logo-gigi.png">
+                            </div>
                         </center>
                     </a>
                     <!-- ============================================================== -->
@@ -61,7 +67,31 @@
                     <!-- ============================================================== -->
                     <!-- Left topbar icon scss in header.scss -->
                     <!-- ============================================================== -->
+                    <ul class="left">
+                        <li class="hide-on-med-and-down">
+                            <a href="javascript: void(0);" class="nav-toggle">
+                                <span class="bars bar1"></span>
+                                <span class="bars bar2"></span>
+                                <span class="bars bar3"></span>
+                            </a>
+                        </li>
+                        <li class="hide-on-large-only">
+                            <a href="javascript: void(0);" class="sidebar-toggle">
+                                <span class="bars bar1"></span>
+                                <span class="bars bar2"></span>
+                                <span class="bars bar3"></span>
+                            </a>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Notification icon scss in header.scss -->
+                        <!-- ============================================================== -->
 
+                        <!-- ============================================================== -->
+                        <!-- Comment topbar icon scss in header.scss -->
+                        <!-- ============================================================== -->
+
+
+                    </ul>
                     <!-- ============================================================== -->
                     <!-- Left topbar icon scss in header.scss -->
                     <!-- ============================================================== -->
