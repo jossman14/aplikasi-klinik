@@ -12,7 +12,7 @@
     <style>
         .center {
             text-align: center;
-}
+        }
 
     </style>
     @yield('halaman-css')
@@ -52,7 +52,8 @@
                     <!-- ============================================================== -->
                     <a href="javascript:void(0)" class="brand-logo col justify-content-center">
                         <center class="">
-                            {{-- <h2 class="white-text m-t-15">KLINIK</h2> --}}
+                            {{-- <h2 class="white-text m-t-15"></h2> --}}
+                            {{-- <div style="height: 30px"></div> --}}
                             <div class="icon">
                                 <img width="80%" class="light-logo"
                                     src="{{ asset('template') }}/assets/images/logo-gigi.png">
@@ -92,6 +93,10 @@
 
 
                     </ul>
+
+                    {{-- <ul class="right col justify-content-center">
+                        <li><h5 id="txt"></h5></li>
+                    </ul> --}}
                     <!-- ============================================================== -->
                     <!-- Left topbar icon scss in header.scss -->
                     <!-- ============================================================== -->
@@ -255,15 +260,14 @@
 
     <li>
 
-            <a class="collapsible-header" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
+        <a class="collapsible-header" href="{{ route('logout') }}" onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
-                <i class="material-icons">directions</i><span class="hide-menu"> Log Out </span>
-            </a>
+            <i class="material-icons">directions</i><span class="hide-menu"> Log Out </span>
+        </a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
 
     </li>
 
@@ -444,7 +448,28 @@
     <script>
         $(function () {
             $("#yearFooter").html(new Date().getFullYear());
+
+            function startTime() {
+                const today = new Date();
+                let h = today.getHours();
+                let m = today.getMinutes();
+                let s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+                setTimeout(startTime, 1000);
+            }
+
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i
+                }; // add zero in front of numbers < 10
+                return i;
+            }
+
+            startTime()
         });
+
     </script>
 </body>
 

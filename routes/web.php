@@ -102,4 +102,4 @@ Route::get('halaman_daftar_periksa/show/{id}', [DaftarPeriksaController::class, 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [DashController::class, 'index'])->name('home');
