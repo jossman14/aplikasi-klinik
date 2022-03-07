@@ -43,9 +43,9 @@
             <div class="auth-box">
                 <div id="loginform">
                     <div class="logo">
-                        <span class="db"><img
+                        <span class="db"><img width="20%"
                                 {{-- src="{{ asset('template') }}/assets/images/logo-icon.png" --}}
-                                src="{{ asset('template') }}/assets/images/fav-klinik.png">
+                                src="{{ asset('template') }}/assets/images/fav-klinik.png"
 
                             alt="logo" /></span>
                         <h5 class="font-medium m-b-20">Masuk ke Sistem Klinik</h5>
