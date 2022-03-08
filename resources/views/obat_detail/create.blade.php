@@ -132,7 +132,7 @@ Halaman Tambah Obat Detail
 
                             </section>
                             <!-- Step 2 -->
-                            <h6>Alamat</h6>
+                            <h6>Detail Obat</h6>
                             <section>
 
                                 <div class="row">
