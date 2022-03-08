@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('judul-halaman')
-Halaman Detail Pasien
+Halaman Detail Obat
 @endsection
 
 @section('konten')
@@ -11,10 +11,10 @@ Halaman Detail Pasien
     <!-- ============================================================== -->
     <div class="page-titles">
         <div class="d-flex align-items-center">
-            <h5 class="font-medium m-b-0">Pasien Detail</h5>
+            <h5 class="font-medium m-b-0">Obat Detail</h5>
             <div class="custom-breadcrumb ml-auto">
-                <a href="#!" class="breadcrumb">Pasien</a>
-                <a href="#!" class="breadcrumb">Pasien Detail</a>
+                <a href="#!" class="breadcrumb">Obat</a>
+                <a href="#!" class="breadcrumb">Obat Detail</a>
             </div>
         </div>
     </div>
