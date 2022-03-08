@@ -42,8 +42,7 @@ Halaman Tambah Pasien
                                         <div class="col s12">
                                             <div class="input-field col s12">
                                                 <input type="text" class="norm" id="norm" name="norm"
-                                                    value="RM{{ strval(sprintf('%06d', $id)); }}"
-                                                    >
+                                                    value="RM{{ strval(sprintf('%06d', $id)); }}">
                                                 <label for="norm"> No RM : (Otomatis) <span class="danger">*</span>
                                                 </label>
                                             </div>
@@ -79,16 +78,15 @@ Halaman Tambah Pasien
                                 <div class="row">
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <input id="tgl_lahir" type="date" class="validate"
-                                                name="tgl_lahir">
-                                                <input type="hidden" name="tgl_lahir" id="tgl_lahir_real"
-                                                value="{{ old('tgl_lahir')}}">
+                                            <input id="tgl_lahir" type="date" class="validate" name="tgl_lahir">
+                                            <input type="hidden" name="tgl_lahir" id="tgl_lahir_real"
+                                                value="{{ old('tgl_lahir') }}">
                                             <label for="tgl_lahir">Tanggal Lahir :</label>
                                         </div>
                                     </div>
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <input type="text" class="umur" id="umur" name="umur"  value="0">
+                                            <input type="text" class="umur" id="umur" name="umur" value="0">
                                             <label for="umur"> Umur : (Otomatis)<span class="danger"></span>
                                             </label>
                                         </div>
@@ -721,26 +719,26 @@ Halaman Tambah Pasien
 
 
             const config = {
-            // html: true,
-            title: 'Apakah anda yakin?',
-            text: 'Apabila anda yakin silahkan klik iya',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Iya',
-            confirmButtonColor: "#DD6B55",
-        };
+                // html: true,
+                title: 'Apakah anda yakin?',
+                text: 'Apabila anda yakin silahkan klik iya',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Iya',
+                confirmButtonColor: "#DD6B55",
+            };
 
-        // first variant
-        sweetAlert.fire(config).then(callback);
+            // first variant
+            sweetAlert.fire(config).then(callback);
 
-        function callback(result) {
-            if (result.value) {
-                SweetAlert.fire("Berhasil!", "data telah dimanipulasi", "success");
-                $("#pasien_form")[0].submit();
+            function callback(result) {
+                if (result.value) {
+                    SweetAlert.fire("Berhasil!", "data telah dimanipulasi", "success");
+                    $("#pasien_form")[0].submit();
 
 
+                }
             }
-        }
 
 
 
@@ -1044,6 +1042,23 @@ Halaman Tambah Pasien
 
         $("#tgl_lahir").change(function (e) {
             $("tgl_lahir_real").val($("#tgl_lahir").val());
+
+            console.log("hehehe")
+            // console.log(e)
+            var createdDate = new Date($("#tgl_lahir").val());
+            // var date1 = crea
+            var date = createdDate.toLocaleString("id-ID", {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            $("#tgl_lahir_real").val($("#tgl_lahir").val());
+
+            year = new Date().getFullYear();
+            $("#tgl_lahir").val(date)
+            $("#umur").val(year - createdDate.getFullYear());
+            $("label[for='umur']").addClass("active");
 
         });
 

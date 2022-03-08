@@ -67,7 +67,7 @@ Halaman Tambah Sumber Daya Manusia
                                     </div>
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <input type="text" class="umur" id="umur" name="umur" readonly value="0">
+                                            <input type="text" class="umur" id="umur" name="umur"  value="0">
                                             <label for="umur"> Umur : (Otomatis)<span class="danger"></span>
                                             </label>
                                         </div>

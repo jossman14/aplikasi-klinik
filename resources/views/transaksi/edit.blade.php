@@ -94,7 +94,7 @@ Halaman Ubah Data Tindakan
                                 </div>
                                 <div class="input-field col s12">
                                     <input type="number" class="harga_total active" id="harga_total" name="harga_total"
-                                        required readonly value="{{ old('harga_total', $tindakan->harga_total) }}">
+                                        required  value="{{ old('harga_total', $tindakan->harga_total) }}">
                                     <label for="harga_total"> Harga Total : <span class="danger"></span>
                                     </label>
                                 </div>

@@ -93,7 +93,7 @@ Halaman Tambah Data Tindakan
                                 </div>
                                 <div class="input-field col s12">
                                     <input type="number" class="harga_total active" id="harga_total" name="harga_total"
-                                        required readonly value="0">
+                                        required  value="0">
                                     <label for="harga_total"> Harga Total : <span class="danger"></span>
                                     </label>
                                 </div>

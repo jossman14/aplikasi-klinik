@@ -764,6 +764,7 @@ Halaman Ubah Obat Detail
 
         $("#tgl_lahir").change(function (e) {
             $("tgl_lahir_real").val($("#tgl_lahir").val());
+            
 
         });
 
