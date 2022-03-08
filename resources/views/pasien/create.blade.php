@@ -1043,22 +1043,7 @@ Halaman Tambah Pasien
         $("#tgl_lahir").change(function (e) {
             $("tgl_lahir_real").val($("#tgl_lahir").val());
 
-            console.log("hehehe")
-            // console.log(e)
-            var createdDate = new Date($("#tgl_lahir").val());
-            // var date1 = crea
-            var date = createdDate.toLocaleString("id-ID", {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            $("#tgl_lahir_real").val($("#tgl_lahir").val());
 
-            year = new Date().getFullYear();
-            $("#tgl_lahir").val(date)
-            $("#umur").val(year - createdDate.getFullYear());
-            $("label[for='umur']").addClass("active");
 
         });
 
