@@ -94,7 +94,7 @@ class PasienController extends Controller
     public function create()
     {
 
-        $id = $this->pasienModel->getLatestRM() == null ? 1 : $this->pasienModel->getLatestRM()->id;
+        $id = $this->pasienModel->getLatestRM() == null ? 1 : $this->pasienModel->getLatestRM()->id + 1;
         // dd($id->id);
         // $norm=1;
 
