@@ -845,7 +845,20 @@ Halaman Tambah Sumber Daya Manusia
         }
 
         $("#tgl_lahir").change(function (e) {
-            $("tgl_lahir_real").val($("#tgl_lahir").val());
+            $("#tgl_lahir_real").val($("#tgl_lahir").val());
+
+            var createdDate = new Date($("#tgl_lahir").val());
+                // var date1 = crea
+                var date = createdDate.toLocaleString("id-ID", {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                year = new Date().getFullYear();
+                $("#umur").val(year - createdDate.getFullYear());
+                $("label[for='umur']").addClass("active");
 
         });
 
