@@ -84,7 +84,7 @@ Halaman Tambah Pasien
                                 <div class="row">
                                     <div class="col m6">
                                         <div class="input-field col s12">
-                                            <input id="tgl_lahir" type="text" class="validate datepicker"
+                                            <input id="tgl_lahir" type="date" class="validate"
                                                 value="{{ old('tgl_lahir', $singlePasien->tgl_lahir) }}">
                                             <input type="hidden" name="tgl_lahir" id="tgl_lahir_real"
                                                 value="{{ old('tgl_lahir', $singlePasien->tgl_lahir) }}">
