@@ -29,7 +29,7 @@ Halaman Ubah Obat Detail
             <div class="col s12">
                 <div class="card">
                     <div class="card-content wizard-content">
-                        <h5 class="card-title">Form Obat Detail Baru</h5>
+                        <h5 class="card-title">Form Obat Detail</h5>
                         <h6 class="card-subtitle">Ubah data form berikut secara berurutan dan sesuai ketentuan</h6>
                         <form action="{{ route('obat_detail.update', $singleObatDetail->id) }}"
                             class="validation-wizard wizard-circle m-t-40" method="POST" id="obat_detail_form">
@@ -136,7 +136,7 @@ Halaman Ubah Obat Detail
 
                             </section>
                             <!-- Step 2 -->
-                            <h6>Alamat</h6>
+                            <h6>Detail Obat</h6>
                             <section>
 
                                 <div class="row">
