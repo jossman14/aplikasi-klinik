@@ -37,7 +37,7 @@ class PasienSeeder extends Seeder
         $status_nikah =  DB::table('status_nikah')->where("deleted_at", '=', null)->pluck("id")->toArray();
         $pasien =  DB::table('pasien')->where("deleted_at", '=', null)->pluck("id")->toArray();
         $poliklinik =  DB::table('poliklinik')->where("deleted_at", '=', null)->pluck("id")->toArray();
-        $dokter =  DB::table('sdm')->whereIn('jobdesk', [3,4])->where("deleted_at", '=', null)->pluck("sdm_id")->toArray();
+        $dokter =  DB::table('sdm')->where('isDokter', "=",2)->where("deleted_at", '=', null)->pluck("sdm_id")->toArray();
 
         // die;
         // dd($poliklinik);

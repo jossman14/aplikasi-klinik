@@ -50,14 +50,14 @@
                     <!-- ============================================================== -->
                     <!-- Logo you can find that scss in header.scss -->
                     <!-- ============================================================== -->
-                    <a href="javascript:void(0)" class="brand-logo col justify-content-center">
+                    <a href="javascript:void(0)" style="display: flex; " class="brand-logo col justify-content-center">
                         <center class="">
-                            {{-- <h2 class="white-text m-t-15"></h2> --}}
+                            <h2 class="white-text m-t-20"></h2>
                             {{-- <div style="height: 30px"></div> --}}
                             <div class="icon">
-                                <img width="80%" class="light-logo"
+                                <img width="50%" class="light-logo"
                                     src="{{ asset('template') }}/assets/images/logo-gigi.png">
-                                <img width="80%" class="dark-logo"
+                                <img width="50%" class="dark-logo"
                                     src="{{ asset('template') }}/assets/images/logo-gigi.png">
                             </div>
                         </center>
@@ -106,7 +106,7 @@
 
                     <!-- ============================================================== -->
                     <!-- Right topbar icon scss in header.scss -->
-                    <!-- ============================================================== -->
+                <!-- ============================================================== -->
                 </div>
             </nav>
             <!-- ============================================================== -->

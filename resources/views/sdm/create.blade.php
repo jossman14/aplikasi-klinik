@@ -119,14 +119,14 @@ Halaman Tambah Sumber Daya Manusia
                                         <div class="input-field col s12">
                                             <select required class="custom-select form-control" id="jobdesk"
                                                 name="jobdesk">
-                                                <option disabled selected>Pilih Jobdesk</option>
+                                                <option disabled selected>Pilih Status SDM</option>
                                                 @foreach($jabatan as $item)
 
                                                     <option value="{{ $item->id }}">{{ $item->nama }}
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            <label for="sapaan"> Jobdesk : <span class="danger">*</span>
+                                            <label for="sapaan"> Status SDM : <span class="danger">*</span>
                                             </label>
                                         </div>
                                     </div>

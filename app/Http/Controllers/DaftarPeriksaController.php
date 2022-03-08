@@ -26,7 +26,7 @@ class DaftarPeriksaController extends Controller
     {
         $data = [
             "daftar_periksa" => DB::table('pasien')->select("id", "norm", "nama","nik", "tgl_lahir", "umur", "alamat_tetap")->where("deleted_at","=",null)->latest()->get(),
-            "dokter" => DB::table("sdm")->whereIn("jobdesk",[3,4])->where("deleted_at","=",null)->get(),
+            "dokter" => DB::table("sdm")->where('isDokter', "=",2)->where("deleted_at","=",null)->get(),
             "poli" => DB::table('poliklinik')->where("deleted_at","=",null)->get()
         ];
 
@@ -109,7 +109,7 @@ class DaftarPeriksaController extends Controller
 
         $data = [
             "daftar_periksa" => DB::table('pasien')->select("id", "norm", "nama","nik", "tgl_lahir", "umur", "alamat_tetap")->where("id","=",$pasien->id)->where("deleted_at","=",null)->latest()->first(),
-            "dokter" => DB::table("sdm")->whereIn("jobdesk",[3,4])->where("deleted_at","=",null)->get(),
+            "dokter" => DB::table("sdm")->where('isDokter', "=",2)->where("deleted_at","=",null)->get(),
             "poli" => DB::table('poliklinik')->where("deleted_at","=",null)->get(),
 
         ];
@@ -175,7 +175,7 @@ class DaftarPeriksaController extends Controller
     {
         $data = [
             "daftar_periksa" => DB::table('daftar_periksa')->select("daftar_periksa.id","daftar_periksa.no_antrian","daftar_periksa.waktu_daftar_periksa", "pasien.nama as nama_pasien", "pasien.nik", "pasien.norm", "poliklinik.nama as poli", "sdm.nama_sdm as nama_dokter",  "daftar_periksa.cara_bayar", "daftar_periksa.rujukan",  "daftar_periksa.penanggungjawab", "daftar_periksa.id_pasien", "daftar_periksa.id_poli", "daftar_periksa.id_dokter",)->join("pasien","pasien.id","=", "daftar_periksa.id_pasien")->join("sdm","sdm.sdm_id","=", "daftar_periksa.id_dokter")->join("poliklinik","poliklinik.id","=", "daftar_periksa.id_poli")->where("daftar_periksa.id","=", $daftar_periksa->id)->where("daftar_periksa.deleted_at","=",null)->orderBy("daftar_periksa.id","DESC")->first(),
-            "dokter" => DB::table("sdm")->whereIn("jobdesk",[3,4])->where("deleted_at","=",null)->get(),
+            "dokter" => DB::table("sdm")->where('isDokter', "=",2)->where("deleted_at","=",null)->get(),
             "poli" => DB::table('poliklinik')->where("deleted_at","=",null)->get(),
 
         ];

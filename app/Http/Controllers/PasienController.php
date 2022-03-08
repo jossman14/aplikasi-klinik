@@ -23,18 +23,20 @@ class PasienController extends Controller
      */
     public function index()
     {
+        $tgl_awal = count(DB::table("pasien")->get()) == 0 ? "belum ada data" : DB::table("pasien")->select("tgl_reg")->orderBy("tgl_reg","asc")->first()->tgl_reg;
+        $tgl_akhir = count(DB::table("pasien")->get()) == 0 ? "belum ada data" : DB::table("pasien")->select("tgl_reg")->orderBy("tgl_reg","desc")->first()->tgl_reg;
         $data = [
-            "all_pasien" => $this->pasienModel->allData(),
+            "all_pasien" => DB::table("pasien")->select("pasien.id as pasienId", "pasien.norm", "pasien.nama", "pasien.tgl_lahir", "pasien.umur", "pasien.desa_tetap_id", "villages.id", "villages.name as nama_desa")->join("villages", "villages.id", "=", "pasien.desa_tetap_id")->where("deleted_at","=",null)->orderBy("pasien.id","DESC")->limit(10)->get(),
             "jenis_kelamin" => $this->utilsModel->getJK(),
             "golongan_darah" => $this->utilsModel->getGolDar(),
-            "status_nikah" => DB::table('status_nikah')->where("deleted_at","=",null)->get(),
 
             "status_nikah" => DB::table('status_nikah')->where("deleted_at","=",null)->get(),
             "keterangan" => "Tabel ini hanya menampilkan 10 data pasien dengan  total data ". "<span class='green white-text p-l-10 p-r-10'>" . DB::table("pasien")->where("deleted_at","=",null)->count() . "</span>". " dari awal mula
-            data pasien ditambahkan ". "<span id='dateFormatAwal' class='green white-text p-l-10 p-r-10'>". DB::table("pasien")->select("tgl_reg")->orderBy("tgl_reg","asc")->first()->tgl_reg. "</span>" ." sampai waktu terakhir data pasien ditambahkan " . "<span id='dateFormatAkhir' class='green  white-text p-l-10 p-r-10'>". DB::table("pasien")->select("tgl_reg")->orderBy("tgl_reg","desc")->first()->tgl_reg. "</span>",
+            data pasien ditambahkan ". "<span id='dateFormatAwal' class='green white-text p-l-10 p-r-10'>". $tgl_awal . "</span>" ." sampai waktu terakhir data pasien ditambahkan " . "<span id='dateFormatAkhir' class='green  white-text p-l-10 p-r-10'>". $tgl_akhir. "</span>",
         ];
 
-        // dd(DB::table("pasien")->select("tgl_reg")->orderBy("tgl_reg","asc")->first()->tgl_reg);
+        // dd(DB::table("pasien")->select("tgl_reg")->order By("tgl_reg","asc")->first());
+        // dd($data);
 
 
         return view("pasien.index", $data);
@@ -92,12 +94,12 @@ class PasienController extends Controller
     public function create()
     {
 
-        $id = $this->pasienModel->getLatestRM() == null ? 1 : $this->pasienModel->getLatestRM();
+        $id = $this->pasienModel->getLatestRM() == null ? 1 : $this->pasienModel->getLatestRM()->id;
         // dd($id->id);
         // $norm=1;
 
         $data = [
-            "id" => $id->id,
+            "id" => $id,
             "sapaan" => $this->utilsModel->getSapaan(),
             "jenis_kelamin" => $this->utilsModel->getJK(),
             "agama" => $this->utilsModel->getAgama(),

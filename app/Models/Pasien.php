@@ -21,7 +21,7 @@ class Pasien extends Model
         // $data = DB::table('pasien')->limit(5)->get();
         $data = DB::table("pasien")->select("pasien.id as pasienId", "pasien.norm", "pasien.nama", "pasien.tgl_lahir", "pasien.umur", "pasien.desa_tetap_id", "villages.id", "villages.name as nama_desa")->join("villages", "villages.id", "=", "pasien.desa_tetap_id")->where("deleted_at","=",null)->latest()->limit(10)->get();
 
-        // dd($data);
+        // dd(count($data));
         return $data;
     }
 
@@ -58,7 +58,7 @@ class Pasien extends Model
     }
 
     public function getLatestRM(){
-        $data = DB::table('pasien')->select("id")->where("deleted_at","=",null)->latest('id')->first();
+        $data = DB::table('pasien')->select("id")->where("deleted_at","=",null)->orderBy("id","desc")->first();
         return $data;
     }
 
