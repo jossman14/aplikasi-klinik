@@ -72,7 +72,7 @@ Halaman Utama Pasien
                                         <tr>
                                             <td>{{ $item->norm }}</td>
                                             <td>{{ $item->nama }}</td>
-                                            <td id="dateFormat{{ $loop->iteration }}">
+                                            <td id="da{{ $loop->iteration }}">
                                                 {{ $item->tgl_lahir }}</td>
                                             <td>{{ $item->umur }}</td>
                                             <td>{{ $item->nama_desa }}</td>
